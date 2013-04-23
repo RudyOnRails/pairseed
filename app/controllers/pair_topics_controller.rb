@@ -1,7 +1,7 @@
 class PairTopicsController < ApplicationController
 
   def index
-    @pair_topics = User.first.pair_topics
+    @pair_topics = current_user.pair_topics
   end
 
   def show
@@ -28,7 +28,7 @@ class PairTopicsController < ApplicationController
   end
 
   def create
-    @pair_topic = User.first.pair_topics.build(pair_topic_params)
+    @pair_topic = current_user.pair_topics.build(params[:pair_topic])
     @pair_topic.save
     redirect_to pair_topics_path
   end
