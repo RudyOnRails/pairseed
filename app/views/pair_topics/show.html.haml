@@ -1,0 +1,22 @@
+.row
+  .span1=image_tag avatar_url(@pair_topic.user)
+  .span11
+    %h1= raw @pair_topic.title
+.row
+  .span4
+  -if current_user.has_not_offered_help?(@pair_topic.id, current_user.id)
+    =form_for @pair_proposal do |f|
+      %fieldset
+        =f.hidden_field :pair_topic_id, :value => @pair_topic.id
+        .control-group
+          =f.label :message, "Message"
+          .controls
+            =f.text_area :message, :class => 'span4'
+        .control-group
+          =f.label :suggested_datetime, "Suggested Day & Time"
+          .controls
+            =f.text_field :suggested_datetime
+        .action
+          =f.submit "Send Pair Proposal", :class => 'btn btn-success'
+  -else
+    =@my_offer.message

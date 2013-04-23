@@ -1,0 +1,42 @@
+!!!
+%html
+  %head
+    %link{ :rel => "shortcut icon", :href => "assets/favicon.ico" }
+
+    %title PairSeed
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = stylesheet_link_tag 'gmaps4rails'
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+    / <link rel='stylesheet' type='text/css' href='fullcalendar.css' />
+  %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container-fluid
+          %ul.nav
+            .brand=link_to 'PairSeed', root_path
+          .pull-right
+            -if user_signed_in?
+              .btn-group
+                =link_to("#",{:class => "btn dropdown-toggle", :"data-toggle" => "dropdown"}) do
+                  =current_user.username
+                  %span.caret
+                %ul.dropdown-menu{"aria-labelledby" => "dLabel", :role => "menu"}
+                  %li=link_to "My Topics", pair_topics_path, :tabindex => "-1"
+                  %li=link_to "My Pair Places", pair_places_path, :tabindex => "-1"
+                  %li=link_to "My Account", edit_user_registration_path, :tabindex => "-1"
+                  %li=link_to "Sign Out", destroy_user_session_path, :method => :delete, :tabindex => "-1"
+            -else
+              =link_to "Login", new_user_session_path
+
+
+    .container-fluid
+      - flash.each do |name, msg|
+        %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
+          %a.close{"data-dismiss" => "alert"} ×
+          = msg
+      =yield
+    %footer
+      = yield :scripts
+    %script$('#pair_proposal_suggested_datetime').datetimepicker({dateFormat: 'yy-mm-dd'});
+    %script$('.dropdown-toggle').dropdown();

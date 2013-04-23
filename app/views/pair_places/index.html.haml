@@ -1,0 +1,25 @@
+%h1 Listing pair_places
+
+%table
+  %tr
+    %th Nickname
+    %th Street
+    %th City
+    %th Country
+    %th
+    %th
+    %th
+
+  - @pair_places.each do |pair_place|
+    %tr
+      %td= pair_place.nickname
+      %td= pair_place.street
+      %td= pair_place.city
+      %td= pair_place.country
+      %td= link_to 'Show', pair_place
+      %td= link_to 'Edit', edit_pair_place_path(pair_place)
+      %td= link_to 'Destroy', pair_place, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Pair place', new_pair_place_path

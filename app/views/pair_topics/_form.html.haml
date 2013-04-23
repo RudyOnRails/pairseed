@@ -1,0 +1,18 @@
+= form_for @pair_topic do |f|
+  -if @pair_topic.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@pair_topic.errors.count, "error")} prohibited this pair_topic from being saved:"
+      %ul
+        - @pair_topic.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :title
+    = f.text_field :title, :class => 'span9'
+  .field
+    = f.label :description
+    = f.text_area :description, :rows => 6, :class => 'span9'
+  .field
+    = f.label :subject_list, 'Tags (separated by commas)'
+    = f.text_field :subject_list, :class => 'span6'
+  .actions
+    = f.submit
