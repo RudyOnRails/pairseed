@@ -1,6 +1,6 @@
 PairSeed::Application.routes.draw do
 
-  resources :organizations
+  resources :organizations, :only => :show
 
   devise_for :users
 
