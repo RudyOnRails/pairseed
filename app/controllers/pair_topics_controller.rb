@@ -1,5 +1,7 @@
 class PairTopicsController < ApplicationController
 
+  before_filter :authenticate_user!
+
   def index
     @pair_topics = current_user.pair_topics
   end
