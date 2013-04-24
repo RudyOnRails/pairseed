@@ -10,7 +10,7 @@
   %body
     .navbar.navbar-fixed-top
       .navbar-inner
-        .container-fluid
+        .container
           %ul.nav
             .brand=link_to 'PairSeed', root_path
             =link_to "Add Pair Topic", new_pair_topic_path, :class => "btn btn-success"
@@ -29,7 +29,7 @@
               =link_to "Login", new_user_session_path
 
 
-    .container-fluid
+    .container
       - flash.each do |name, msg|
         %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
           %a.close{"data-dismiss" => "alert"} ×
