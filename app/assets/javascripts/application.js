@@ -17,9 +17,8 @@
 //= require_tree .
 
 $(document).ready(function(){
-  $(function() {
-    ("#pair_proposal_suggested_datetime").datepicker();
-  });
+
+    $("#pair_proposal_suggested_datetime").datepicker();
 
   // page is now ready, initialize the calendar...
 
