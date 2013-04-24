@@ -1,31 +1,31 @@
-.well
-  .row
-    .span2=image_tag @organization.logo_image_url.to_s
-    .span10
-      %h1
-        -if current_user.try(:not_a_member?, @organization.id)
-          =link_to 'Join', organization_memberships_path(@organization.id), :class => 'btn btn-large btn-success', :method => :post
-        -else
-          =link_to 'UnFollow', '#', :class => 'btn btn-danger', :method => :delete
-        =link_to @organization.name, @organization.url, :target => "_blank"
+.row
+  .span2
+    =image_tag @organization.logo_image_url.to_s
+  .span10
+    %h1
+      -if current_user.try(:not_a_member?, @organization.id)
+        =link_to 'Join', organization_memberships_path(@organization.id), :class => 'btn  btn-success', :method => :post
+      -else
+        =link_to 'UnFollow', '#', :class => 'btn btn-danger', :method => :delete
+      =link_to @organization.name, @organization.url, :target => "_blank"
+.row.span12.top-buffer
+  %ul{:class => 'nav nav-tabs', :id => 'org_pair_topics_and_members'}
+    %li.active
+      =link_to "Pair Topics", '#pair_topics', :'data-toggle' => "tab"
+    %li
+      =link_to "Members", '#members', :'data-toggle' => "tab"
 
-%ul{:class => 'nav nav-tabs', :id => 'org_pair_topics_and_members'}
-  %li.active
-    =link_to "Pair Topics", '#pair_topics', :'data-toggle' => "tab"
-  %li
-    =link_to "Members", '#members', :'data-toggle' => "tab"
-
-.tab-content
-  #pair_topics.tab-pane.active
-    %table.table
-      %tr
-        %th Title
-      -@pair_topics.each do |pair_topic|
+  .tab-content
+    #pair_topics.tab-pane.active
+      %table.table
         %tr
-          %td=raw link_to(raw(pair_topic.title), pair_topic_path(pair_topic.id))
-    .pagination=will_paginate @pair_topics
-  #members.tab-pane
-    -@members.each do |member|
-      .well.span2
-        =member.username
+          %th Title
+        -@pair_topics.each do |pair_topic|
+          %tr
+            %td=raw link_to(raw(pair_topic.title), pair_topic_path(pair_topic.id))
+      .pagination=will_paginate @pair_topics
+    #members.tab-pane
+      -@members.each do |member|
+        .well.span2
+          =member.username
 
