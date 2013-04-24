@@ -25,6 +25,25 @@ class PairTopicsController < ApplicationController
 
   end
 
+  def edit
+    @pair_topic = PairTopic.find(params[:id])
+  end
+
+  def update
+    @pair_topic = PairTopic.find(params[:id])
+
+    respond_to do |format|
+      if @pair_topic.update_attributes(params[:pair_topic])
+        format.html { redirect_to @pair_topic, notice: 'Pair Topic was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @pair_topic.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
   def new
     @pair_topic = PairTopic.new
   end

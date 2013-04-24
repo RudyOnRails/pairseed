@@ -7,4 +7,4 @@
       %tr
         %td=link_to raw(pair_topic.title), pair_topic_path(pair_topic.id)
         %td=distance_of_time_in_words(pair_topic.created_at, Time.now) + ' ago'
-        %td=link_to "Delete", pair_topic_path(pair_topic), :method => :delete
+        %td=link_to "Edit", edit_pair_topic_path(pair_topic)
