@@ -34,6 +34,7 @@ class PairTopicsController < ApplicationController
   end
 
   def destroy
+    @pair_topic = PairTopic.find(params[:id])
     @pair_topic.destroy
     respond_to do |format|
       format.html { redirect_to pair_topics_url }
