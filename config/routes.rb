@@ -1,7 +1,5 @@
 PairSeed::Application.routes.draw do
 
-  resources :pair_places
-
   resources :organizations
 
   devise_for :users
