@@ -27,6 +27,7 @@ class PairTopicsController < ApplicationController
 
   def edit
     @pair_topic = PairTopic.find(params[:id])
+    authorize! :edit, @pair_topic
   end
 
   def update
