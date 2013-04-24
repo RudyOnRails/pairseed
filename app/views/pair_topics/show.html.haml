@@ -3,20 +3,31 @@
   .span11
     %h1= raw @pair_topic.title
 .row
-  .span4
-  -if current_user.has_not_offered_help?(@pair_topic.id, current_user.id)
-    =form_for @pair_proposal do |f|
-      %fieldset
-        =f.hidden_field :pair_topic_id, :value => @pair_topic.id
-        .control-group
-          =f.label :message, "Message"
-          .controls
-            =f.text_area :message, :class => 'span4'
-        .control-group
-          =f.label :suggested_datetime, "Suggested Day & Time"
-          .controls
-            =f.text_field :suggested_datetime
-        .action
-          =f.submit "Send Pair Proposal", :class => 'btn btn-success'
+  -if cannot? :manage, @pair_topic
+    .span4
+    -if current_user.has_not_offered_help?(@pair_topic.id, current_user.id)
+      =form_for @pair_proposal do |f|
+        %fieldset
+          =f.hidden_field :pair_topic_id, :value => @pair_topic.id
+          .control-group
+            =f.label :message, "Message"
+            .controls
+              =f.text_area :message, :class => 'span3'
+          .control-group
+            =f.label :suggested_datetime, "Suggested Day & Time"
+            .controls
+              =f.text_field :suggested_datetime
+          .action
+            =f.submit "Send Pair Proposal", :class => 'btn btn-success'
+    -else
+      =@my_offer.message
   -else
-    =@my_offer.message
+    %ul.nav.nav-tabs#myTab
+      %li.active=link_to "Requests", "#requests", :"data-toggle" => "tab"
+      %li=link_to "Offers", "#offers", :"data-toggle" => "tab"
+
+    .tab-content
+      .tab-pane.active#requests
+        Here are the requests
+      .tab-pane#offers
+        Here are the offers
