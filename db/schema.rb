@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130424141055) do
+ActiveRecord::Schema.define(:version => 20130425172338) do
+
+  create_table "email_invitations", :force => true do |t|
+    t.string   "email_address"
+    t.integer  "pair_topic_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "organization_memberships", :force => true do |t|
     t.integer  "user_id"
@@ -32,6 +39,16 @@ ActiveRecord::Schema.define(:version => 20130424141055) do
 
   add_index "organizations", ["slug"], :name => "index_organizations_on_slug"
 
+  create_table "pair_offers", :force => true do |t|
+    t.integer  "pair_topic_id"
+    t.integer  "user_id"
+    t.datetime "suggested_datetime"
+    t.text     "message"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "pair_place"
+  end
+
   create_table "pair_places", :force => true do |t|
     t.string   "nickname"
     t.string   "street"
@@ -40,15 +57,6 @@ ActiveRecord::Schema.define(:version => 20130424141055) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "pair_proposals", :force => true do |t|
-    t.integer  "pair_topic_id"
-    t.integer  "user_id"
-    t.datetime "suggested_datetime"
-    t.text     "message"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
   end
 
   create_table "pair_topics", :force => true do |t|

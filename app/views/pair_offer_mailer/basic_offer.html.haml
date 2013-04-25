@@ -1,0 +1,7 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    .well
+      %h1 #{@pair_offer.user.first_name + @pair_offer.user.last_name} wants to pair up on your topic: #{link_to @pair_topic.title, pair_topic_url(@pair_topic)}

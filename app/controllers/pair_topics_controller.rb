@@ -20,8 +20,8 @@ class PairTopicsController < ApplicationController
     #   marker.json({ :id => pair_topic.id, :title => pair_topic.title })
     # end
 
-    @pair_proposal = PairProposal.new
-    @my_offer = PairProposal.find_by_user_id_and_pair_topic_id(current_user.id, @pair_topic.id)
+    @pair_offer = PairOffer.new
+    @my_offer = PairOffer.find_by_user_id_and_pair_topic_id(current_user.id, @pair_topic.id)
 
   end
 

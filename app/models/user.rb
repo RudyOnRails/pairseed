@@ -13,13 +13,13 @@ class User < ActiveRecord::Base
   has_many :organization_memberships
   has_many :organizations, :through => :organization_memberships
   has_many :organization_pair_topics, :through => :organizations, :source => :member_pair_topics, :uniq => true
-  has_many :pair_proposals
+  has_many :pair_offers
 
   def not_a_member?(organization_id)
     !self.organizations.include?(organization_id)
   end
 
   def has_not_offered_help?(pair_topic_id, user_id)
-    !PairProposal.where(:pair_topic_id => pair_topic_id, :user_id => user_id).exists?
+    !PairOffer.where(:pair_topic_id => pair_topic_id, :user_id => user_id).exists?
   end
 end

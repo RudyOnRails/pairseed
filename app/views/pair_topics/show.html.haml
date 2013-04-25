@@ -5,32 +5,40 @@
       =raw @pair_topic.title
       -unless cannot? :manage, @pair_topic
         =link_to "Edit", edit_pair_topic_path, :class => 'btn'
-.row
-  -if cannot? :manage, @pair_topic
-    .span4
-    -if current_user.has_not_offered_help?(@pair_topic.id, current_user.id)
-      =form_for @pair_proposal do |f|
-        %fieldset
-          =f.hidden_field :pair_topic_id, :value => @pair_topic.id
-          .control-group
-            =f.label :message, "Message"
-            .controls
-              =f.text_area :message, :class => 'span3'
-          .control-group
-            =f.label :suggested_datetime, "Suggested Day & Time"
-            .controls
-              =f.text_field :suggested_datetime
-          .action
-            =f.submit "Send Pair Proposal", :class => 'btn btn-success'
+.row.top-buffer
+  .span12
+    -if can? :manage, @pair_topic
+      %ul.nav.nav-tabs#myTab
+        %li.active=link_to "Requests", "#requests", :"data-toggle" => "tab"
+        %li=link_to "Offers", "#offers", :"data-toggle" => "tab"
+      .tab-content
+        .tab-pane.active#requests
+          Here are the requests
+        .tab-pane#offers
+          Here are the offers
     -else
-      =@my_offer.message
-  -else
-    %ul.nav.nav-tabs#myTab
-      %li.active=link_to "Requests", "#requests", :"data-toggle" => "tab"
-      %li=link_to "Offers", "#offers", :"data-toggle" => "tab"
+      -if current_user.has_not_offered_help?(@pair_topic.id, current_user.id)
+        .offset1.span8
+          =form_for @pair_offer do |f|
+            %fieldset
+              =f.hidden_field :pair_topic_id, :value => @pair_topic.id
+              .control-group.span4
+                =f.label :message, "Message"
+                .controls
+                  =f.text_area :message, :class => 'span4', :rows => 10
+              .control-group.span2
+                =f.label :pair_place, "Suggest a place..."
+                .controls
+                  =f.text_field :pair_place
+                =f.label :suggested_datetime, "Suggest a day & time..."
+                .controls
+                  =f.text_field :suggested_datetime
+                .action
+                  =f.submit "Send Pair Proposal", :class => 'btn btn-success'
+      -else
+        =@my_offer.message
 
-    .tab-content
-      .tab-pane.active#requests
-        Here are the requests
-      .tab-pane#offers
-        Here are the offers
+
+
+
+

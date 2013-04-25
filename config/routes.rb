@@ -13,6 +13,6 @@ PairSeed::Application.routes.draw do
   post 'organizations/:organization_id/join' => 'organization_memberships#create', :as => :organization_memberships
 
   resources :pair_topics, :only => [:show, :new, :index, :create, :edit, :update, :destroy]
-  resources :pair_proposals, :only => [:index, :create]
+  resources :pair_offers, :only => [:index, :create]
   
 end
