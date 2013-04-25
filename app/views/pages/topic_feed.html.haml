@@ -2,11 +2,9 @@
 .table
   %table
     %tr
-      %th User
       %th Topic
       %th Posted...
     -@feed_topics.each do |pair_topic|
       %tr
-        %td=image_tag avatar_url(pair_topic.user)
         %td=link_to raw(pair_topic.title), pair_topic_path(pair_topic.id)
         %td=distance_of_time_in_words(pair_topic.created_at, Time.now) + ' ago'
