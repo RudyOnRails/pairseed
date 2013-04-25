@@ -56,6 +56,8 @@ GEM
     eventmachine (1.0.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    font-awesome-rails (3.0.2.0)
+      railties (>= 3.1)
     friendly_id (4.0.9)
     haml (4.0.2)
       tilt
@@ -145,6 +147,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 3.2.1)
   devise
+  font-awesome-rails
   friendly_id
   haml-rails
   jquery-rails
