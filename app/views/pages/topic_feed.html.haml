@@ -5,7 +5,7 @@
       %th User
       %th Topic
       %th Posted...
-    -@organization_pair_topics.each do |pair_topic|
+    -@feed_topics.each do |pair_topic|
       %tr
         %td=image_tag avatar_url(pair_topic.user)
         %td=link_to raw(pair_topic.title), pair_topic_path(pair_topic.id)

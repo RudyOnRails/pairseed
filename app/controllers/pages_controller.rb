@@ -18,7 +18,8 @@ class PagesController < ApplicationController
   end
   
   def topic_feed
-    @organization_pair_topics = User.first.organization_pair_topics.order('created_at DESC')
+    # @feed_topics = User.first.organization_pair_topics.order('created_at DESC')
+    @feed_topics = PairTopic.order('created_at ASC')
   end
 
   def dashboard
