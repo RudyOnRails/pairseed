@@ -11,10 +11,10 @@
   %body
     .navbar.navbar-fixed-top
       .navbar-inner
-        .container
+        .container.text-center
           %ul.nav
             .brand=link_to 'PairSeed', root_path
-            =link_to "Add Pair Topic", new_pair_topic_path, :class => "btn btn-success"
+          =link_to "Add Pair Topic", new_pair_topic_path, :class => "btn btn-success"
           .pull-right
             -if user_signed_in?
               .btn-group
