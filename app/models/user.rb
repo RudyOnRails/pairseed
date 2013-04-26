@@ -1,16 +1,15 @@
 class User < ActiveRecord::Base
-  before_validation :downcase_email, :downcase_username
+  attr_accessible :first_name, :last_name, :username, :email, :password, :password_confirmation, :remember_me
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :first_name, :last_name, :presence => true
-  validates :username, :uniqueness => true
+  validates :username, :uniqueness => { :case_sensitive => false }
   validates :username, :format => { :with => /^[A-Za-z\d_]+$/ }
   validates :username, :exclusion => { :in => %w(admin superuser pairseed) }
   validates :email, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create }
 
-  attr_accessible :first_name, :last_name, :username, :email, :password, :password_confirmation, :remember_me
   acts_as_taggable_on :organizations
 
   has_many :pair_topics
@@ -32,13 +31,4 @@ class User < ActiveRecord::Base
     first_name + " " + last_name
   end
 
-  private
-
-    def downcase_email
-      self.email = self.email.downcase if self.email.present?
-    end
-
-    def downcase_username
-      self.username = self.username.downcase if self.username.present?
-    end
 end
