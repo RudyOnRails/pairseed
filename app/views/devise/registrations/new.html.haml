@@ -1,29 +1,23 @@
+%h2.text-center I am so excited you're signing up!
 .offset4.span2
-  %h2 Sign up
   = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
     = devise_error_messages!
     %div
-      = f.label :first_name
       %br/
       = f.email_field :first_name, :autofocus => true, :placeholder => "Enter your first name..."
     %div
-      = f.label :last_name
       %br/
       = f.email_field :last_name, :placeholder => "Enter your last name..."
     %div
-      = f.label :email
       %br/
       = f.email_field :email, :placeholder => "Enter your email address..."
     %div
-      = f.label :username
       %br/
       = f.text_field :username, :placeholder => "Enter a username..."
     %div
-      = f.label :password
       %br/
       = f.password_field :password, :placeholder => "Give us your password!"
     %div
-      = f.label :password_confirmation
       %br/
       = f.password_field :password_confirmation, :placeholder => "Give it to us again!"
     %div= f.submit "Sign up"
