@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :first_name, :last_name, :presence => true
+  validates :first_name, :last_name, :format => { :with => /^[^0-9`!@#\$%\^&*+_=]+$/ }
   validates :username, :uniqueness => { :case_sensitive => false }
   validates :username, :format => { :with => /^[A-Za-z\d_]+$/ }
   validates :username, :exclusion => { :in => %w(admin superuser pairseed) }
