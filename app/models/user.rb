@@ -22,4 +22,8 @@ class User < ActiveRecord::Base
   def has_not_offered_help?(pair_topic_id, user_id)
     !PairOffer.where(:pair_topic_id => pair_topic_id, :user_id => user_id).exists?
   end
+
+  def full_name
+    first_name + " " + last_name
+  end
 end
