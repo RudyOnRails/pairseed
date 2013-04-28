@@ -80,4 +80,6 @@ PairSeed::Application.configure do
 
   # Devise - If you are deploying Rails 3.1+ on Heroku, you may want to set:
   config.assets.initialize_on_precompile = false
+
+  config.action_mailer.default_url_options = { host: 'pairseed.com' }
 end
