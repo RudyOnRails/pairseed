@@ -2,7 +2,7 @@ Organization.delete_all
 PairTopic.delete_all
 User.delete_all
 OrganizationMembership.delete_all
-PairProposal.delete_all
+PairOffer.delete_all
 
 kevin = User.create(:first_name => "Kevin", :last_name => "Musiorski", :email => "rudyonrails@gmail.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "RudyOnRails")
 helper = User.create(:first_name => "Helper", :last_name => "McGee", :email => "helper@pairseed.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "i_help_you")
@@ -13,12 +13,11 @@ arvin = User.create(:first_name => "Arvin", :last_name => "Dang", :email => "arv
 alex = User.create(:first_name => "Alex", :last_name => "Soble", :email => "alex@pairseed.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "asoble")
 fahad = User.create(:first_name => "Fahad", :last_name => "Sami", :email => "fahad@pairseed.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "fahad")
 fonso = User.create(:first_name => "Alfonso", :last_name => "Rush", :email => "fonso@pairseed.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "thefonso")
-cullen = User.create(:first_name => "Tom", :last_name => "Cullen", :email => "cullen@pairseed.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "t_bone")
-t_bone = User.create(:first_name => "Tom", :last_name => "Brown", :email => "t_bone@pairseed.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "t_cullen")
+cullen = User.create(:first_name => "Tom", :last_name => "Cullen", :email => "cullen@pairseed.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "cullen")
+t_bone = User.create(:first_name => "Tom", :last_name => "Brown", :email => "t_bone@pairseed.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "t_bone")
 g_hendry = User.create(:first_name => "Ginny", :last_name => "Hendry", :email => "g_hendry@pairseed.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "g_hendry")
 h_twardosz = User.create(:first_name => "Heather", :last_name => "Twardosz", :email => "heatheret@pairseed.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "heatheret")
 a_patel = User.create(:first_name => "Ankur", :last_name => "Patel", :email => "emailankur@pairseed.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "emailankur")
-t_brown = User.create(:first_name => "Tom", :last_name => "Brown", :email => "tom_brown@pairseed.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "t_bone")
 e_cooper = User.create(:first_name => "Emily", :last_name => "Cooper", :email => "emilymcooper@pairseed.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "coop")
 
 kevin.pair_topics.create(:title => "Looking to get started with FactoryGirl.")
@@ -28,7 +27,7 @@ fonso.pair_topics.create(:title => "I'm trying to figure out what this font is."
 fonso.pair_topics.create(:title => "Has anyone had experience with turn.js ?")
 h_twardosz.pair_topics.create(:title => "I'm working on a site using a squarespace template and now want to drop in the slider code.")
 a_patel.pair_topics.create(:title => "Our team is looking into developing with PhoneGap - does anyone have any expertise with PhoneGap development that is willing to jump on a 30 minute phone call with us?")
-t_brown.pair_topics.create(:title => "Looking to go over the basics of git.")
+t_bone.pair_topics.create(:title => "Looking to go over the basics of git.")
 e_cooper.pair_topics.create(:title => "I've been struggling for a week now trying to install the Nokogiri gem.")
 
 kevin.pair_places.create(:nickname => "C&C Starbucks", :street => "750 North Franklin Street", :city => "Chicago", :country => "USA")
