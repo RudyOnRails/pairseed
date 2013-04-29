@@ -5,6 +5,7 @@ class PairOfferMailer < ActionMailer::Base
     @pair_offer = pair_offer
     @pair_topic = pair_topic
     @helper = @pair_offer.user
-    mail(:from => "Pair Seed", to: @pair_topic.user.email, subject: "#{@helper.full_name + " (" + @helper.username + ") "} wants to pair!")
+    @from = "\"PairSeed\" <notifications@pairseed.com>"
+    mail(:from => @from, to: @pair_topic.user.email, subject: "#{@helper.full_name + " (" + @helper.username + ") "} wants to pair!")
   end
 end
