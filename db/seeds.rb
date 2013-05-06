@@ -29,7 +29,9 @@ a_patel.pair_topics.create(:title => "Our team is looking into developing with P
 t_bone.pair_topics.create(:title => "Looking to go over the basics of git.")
 
 offer1 = kevin1.pair_offers.create(:user_id => fonso.id, :suggested_datetime => Time.now + 2.days, :message => "I can help!", :pair_place => "1871")
-p offer1.errors.messages
+offer2 = kevin1.pair_offers.create(:user_id => helper.id, :suggested_datetime => Time.now + 1.days, :message => "I can help!", :pair_place => "Starbucks @ Chicago/Franklin")
+offer3 = kevin1.pair_offers.create(:user_id => neal.id, :suggested_datetime => Time.now + 3.hours, :message => "Hey Rudy, I want to get started with FactoryGirl too. Love, Neal.", :pair_place => "37 Signals HQ")
+offer4 = kevin1.pair_offers.create(:user_id => vince.id, :suggested_datetime => Time.now + 45.minutes, :message => "Hey Rudy, let's do this.", :pair_place => "TSL Design Classroom")
 
 kevin.pair_places.create(:nickname => "C&C Starbucks", :street => "750 North Franklin Street", :city => "Chicago", :country => "USA")
 kevin.pair_places.create(:nickname => "Tinley Starbucks", :street => "15901 South Harlem Avenue", :city => "Chicago", :country => "USA")
