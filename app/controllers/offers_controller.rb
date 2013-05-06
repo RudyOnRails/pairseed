@@ -8,5 +8,11 @@ class OffersController < ApplicationController
     redirect_to @topic
   end
 
-  
+  def accept
+    @offer = Offer.find(params[:id])
+    @offer.accept
+    @topic = @offer.topic
+
+    redirect_to @topic
+  end
 end
