@@ -18,12 +18,14 @@
           .table
             %table
               %tr
+                %th
                 %th From
                 %th Message
                 %th When
                 %th Where
               -@offers.each do |offer|
                 %tr
+                  %td=link_to "Accept", accept_offer_path(offer.id)
                   %td=offer.user.full_name
                   %td=offer.message
                   %td=offer.suggested_datetime.strftime("%A, %B #{offer.suggested_datetime.day.ordinalize} @ %-l:%M%P")

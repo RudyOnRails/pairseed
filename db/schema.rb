@@ -13,13 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20130506045340) do
 
-  create_table "email_invitations", :force => true do |t|
-    t.string   "email_address"
-    t.integer  "pair_topic_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
   create_table "memberships", :force => true do |t|
     t.integer  "user_id"
     t.integer  "organization_id"
@@ -48,11 +41,6 @@ ActiveRecord::Schema.define(:version => 20130506045340) do
   end
 
   add_index "organizations", ["slug"], :name => "index_organizations_on_slug"
-
-  create_table "pair_offer_acceptances", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
   create_table "places", :force => true do |t|
     t.string   "nickname"
@@ -86,7 +74,6 @@ ActiveRecord::Schema.define(:version => 20130506045340) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "state"
   end
 
   create_table "users", :force => true do |t|
