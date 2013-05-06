@@ -14,5 +14,7 @@ PairSeed::Application.routes.draw do
 
   resources :topics, :only => [:show, :new, :index, :create, :edit, :update, :destroy]
   resources :offers, :only => [:index, :create]
+
+  get '/offers/accept' => "offers#accept", :as => :accept_offer
   
 end
