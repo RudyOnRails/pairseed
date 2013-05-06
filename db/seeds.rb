@@ -19,7 +19,7 @@ g_hendry = User.create(:first_name => "Ginny", :last_name => "Hendry", :email =>
 h_twardosz = User.create(:first_name => "Heather", :last_name => "Twardosz", :email => "kmusiorski@pairseed.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "heatheret")
 a_patel = User.create(:first_name => "Ankur", :last_name => "Patel", :email => "emailankur@pairseed.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "emailankur")
 
-kevin.pair_topics.create(:title => "Looking to get started with FactoryGirl.")
+kevin1 = kevin.pair_topics.create(:title => "Looking to get started with FactoryGirl.")
 kevin.pair_topics.create(:title => "if anyone has any experience with the google calendar API and would like to pair up and play around, give me a shout.")
 fonso.pair_topics.create(:title => "Error R11 (Bad bind) -> Process bound to port 3000, should be 12776")
 fonso.pair_topics.create(:title => "I'm trying to figure out what this font is.")
@@ -27,6 +27,9 @@ fonso.pair_topics.create(:title => "Has anyone had experience with turn.js ?")
 h_twardosz.pair_topics.create(:title => "I'm working on a site using a squarespace template and now want to drop in the slider code.")
 a_patel.pair_topics.create(:title => "Our team is looking into developing with PhoneGap - does anyone have any expertise with PhoneGap development that is willing to jump on a 30 minute phone call with us?")
 t_bone.pair_topics.create(:title => "Looking to go over the basics of git.")
+
+offer1 = kevin1.pair_offers.create(:user_id => fonso.id, :suggested_datetime => Time.now + 2.days, :message => "I can help!", :pair_place => "1871")
+p offer1.errors.messages
 
 kevin.pair_places.create(:nickname => "C&C Starbucks", :street => "750 North Franklin Street", :city => "Chicago", :country => "USA")
 kevin.pair_places.create(:nickname => "Tinley Starbucks", :street => "15901 South Harlem Avenue", :city => "Chicago", :country => "USA")

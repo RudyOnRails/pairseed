@@ -22,6 +22,7 @@ class PairTopicsController < ApplicationController
 
     @pair_offer = PairOffer.new
     @my_offer = PairOffer.find_by_user_id_and_pair_topic_id(current_user.id, @pair_topic.id)
+    @pair_offers = @pair_topic.pair_offers
 
   end
 

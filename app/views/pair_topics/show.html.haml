@@ -9,13 +9,26 @@
   .span12
     -if can? :manage, @pair_topic
       %ul.nav.nav-tabs#myTab
-        %li.active=link_to "Requests", "#requests", :"data-toggle" => "tab"
-        %li=link_to "Offers", "#offers", :"data-toggle" => "tab"
+        / %li.active=link_to "Requests", "#requests", :"data-toggle" => "tab"
+        %li.active=link_to "Offers", "#offers", :"data-toggle" => "tab"
       .tab-content
-        .tab-pane.active#requests
-          Here are the requests
-        .tab-pane#offers
-          Here are the offers
+        / .tab-pane.active#requests
+        /   Here are the requests
+        .tab-pane.active#offers
+          .table
+            %table
+              %tr
+                %th From
+                %th Message
+                %th When
+                %th Where
+              -@pair_offers.each do |pair_offer|
+                %tr
+                  %td=pair_offer.user.full_name
+                  %td=pair_offer.message
+                  %td=pair_offer.suggested_datetime.strftime("%A, %B #{pair_offer.suggested_datetime.day.ordinalize} @ %-l:%M%P")
+                  %td=pair_offer.pair_place
+
     -else
       -if current_user.has_not_offered_help?(@pair_topic.id, current_user.id)
         .offset1.span8
