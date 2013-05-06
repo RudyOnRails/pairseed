@@ -2,10 +2,10 @@ class PagesController < ApplicationController
 
   before_filter :authenticate_user!, :only => [:topic_feed]
 
-  def pair_topic_map
-    @pair_topics = PairTopic.all
-    @json = @pair_topics.to_gmaps4rails do |pair_topic, marker|
-      marker.infowindow render_to_string(:partial => "/pair_topics/gmaps_marker", :locals => { :object => pair_topic})
+  def topic_map
+    @topics = Topic.all
+    @json = @topics.to_gmaps4rails do |topic, marker|
+      marker.infowindow render_to_string(:partial => "/topics/gmaps_marker", :locals => { :object => topic})
       marker.picture({
                       :picture => "assets/favicon.ico",
                       :width   => 32,
@@ -13,14 +13,14 @@ class PagesController < ApplicationController
                      })
       # marker.title   "i'm the title"
       # marker.sidebar "i'm the sidebar"
-      marker.json({ :id => pair_topic.id, :title => pair_topic.title })
+      marker.json({ :id => topic.id, :title => topic.title })
     end
   end
   
   def topic_feed
-    # @feed_topics = User.first.organization_pair_topics.order('created_at DESC')
-    # @feed_topics = PairTopic.order('created_at ASC')
-    @feed_topics = PairTopic.where("user_id != ?", current_user.id)
+    # @feed_topics = User.first.organization_topics.order('created_at DESC')
+    # @feed_topics = Topic.order('created_at ASC')
+    @feed_topics = Topic.where("user_id != ?", current_user.id)
   end
 
   def dashboard

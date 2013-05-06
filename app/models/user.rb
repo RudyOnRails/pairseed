@@ -13,19 +13,19 @@ class User < ActiveRecord::Base
 
   acts_as_taggable_on :organizations
 
-  has_many :pair_topics
-  has_many :pair_places
-  has_many :organization_memberships
-  has_many :organizations, :through => :organization_memberships
-  has_many :organization_pair_topics, :through => :organizations, :source => :member_pair_topics, :uniq => true
-  has_many :pair_offers
+  has_many :topics
+  has_many :places
+  has_many :memberships
+  has_many :organizations, :through => :memberships
+  has_many :organization_topics, :through => :organizations, :source => :member_topics, :uniq => true
+  has_many :offers
 
   def not_a_member?(organization_id)
     !self.organizations.include?(organization_id)
   end
 
-  def has_not_offered_help?(pair_topic_id, user_id)
-    !PairOffer.where(:pair_topic_id => pair_topic_id, :user_id => user_id).exists?
+  def has_not_offered_help?(topic_id, user_id)
+    !Offer.where(:topic_id => topic_id, :user_id => user_id).exists?
   end
 
   def full_name

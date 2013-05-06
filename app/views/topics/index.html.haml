@@ -1,10 +1,10 @@
-
 .table
   %table
     %tr
-      %th Topic
-      %th Posted...
-    -@feed_topics.each do |topic|
+      %th Title
+      %th Created
+    -@topics.each do |topic|
       %tr
         %td=link_to raw(topic.title), topic_path(topic.id)
         %td=distance_of_time_in_words(topic.created_at, Time.now) + ' ago'
+        %td=link_to "Edit", edit_topic_path(topic)

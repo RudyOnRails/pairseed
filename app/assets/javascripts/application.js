@@ -18,16 +18,8 @@
 
 $(document).ready(function(){
 
-  $("#pair_offer_suggested_datetime").datetimepicker({
+  $("#offer_suggested_datetime").datetimepicker({
     dateFormat: 'yy-mm-dd'
   });
-  // page is now ready, initialize the calendar...
-
-  // $('#helpee_calendar').fullCalendar({
-  //   defaultView: 'agendaDay',
-  // });
-  // $('#helper_calendar').fullCalendar({
-  //   defaultView: 'agendaDay',
-  // });
 
 });

@@ -1,13 +1,13 @@
 .row
-  .span1=image_tag avatar_url(@pair_topic.user)
+  .span1=image_tag avatar_url(@topic.user)
   .span11
     %h1
-      =raw @pair_topic.title
-      -unless cannot? :manage, @pair_topic
-        =link_to "Edit", edit_pair_topic_path, :class => 'btn'
+      =raw @topic.title
+      -unless cannot? :manage, @topic
+        =link_to "Edit", edit_topic_path, :class => 'btn'
 .row.top-buffer
   .span12
-    -if can? :manage, @pair_topic
+    -if can? :manage, @topic
       %ul.nav.nav-tabs#myTab
         / %li.active=link_to "Requests", "#requests", :"data-toggle" => "tab"
         %li.active=link_to "Offers", "#offers", :"data-toggle" => "tab"
@@ -22,32 +22,32 @@
                 %th Message
                 %th When
                 %th Where
-              -@pair_offers.each do |pair_offer|
+              -@offers.each do |offer|
                 %tr
-                  %td=pair_offer.user.full_name
-                  %td=pair_offer.message
-                  %td=pair_offer.suggested_datetime.strftime("%A, %B #{pair_offer.suggested_datetime.day.ordinalize} @ %-l:%M%P")
-                  %td=pair_offer.pair_place
+                  %td=offer.user.full_name
+                  %td=offer.message
+                  %td=offer.suggested_datetime.strftime("%A, %B #{offer.suggested_datetime.day.ordinalize} @ %-l:%M%P")
+                  %td=offer.suggested_place
 
     -else
-      -if current_user.has_not_offered_help?(@pair_topic.id, current_user.id)
+      -if current_user.has_not_offered_help?(@topic.id, current_user.id)
         .offset1.span8
-          =form_for @pair_offer do |f|
+          =form_for @offer do |f|
             %fieldset
-              =f.hidden_field :pair_topic_id, :value => @pair_topic.id
+              =f.hidden_field :topic_id, :value => @topic.id
               .control-group.span4
                 =f.label :message, "Message"
                 .controls
                   =f.text_area :message, :class => 'span4', :rows => 10
               .control-group.span2
-                =f.label :pair_place, "Suggest a place..."
+                =f.label :suggested_place, "Suggest a place..."
                 .controls
-                  =f.text_field :pair_place
+                  =f.text_field :suggested_place
                 =f.label :suggested_datetime, "Suggest a day & time..."
                 .controls
                   =f.text_field :suggested_datetime
                 .action
-                  =f.submit "Send Pair Proposal", :class => 'btn btn-success'
+                  =f.submit "Send Offer", :class => 'btn btn-success'
       -else
         =@my_offer.message
 

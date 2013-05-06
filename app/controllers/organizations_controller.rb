@@ -10,7 +10,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1.json
   def show
     @organization = Organization.find(params[:id])
-    @pair_topics = @organization.member_pair_topics.paginate(:page => params[:page], :per_page => 10)
+    @topics = @organization.member_topics.paginate(:page => params[:page], :per_page => 10)
     @members = @organization.members
 
   end

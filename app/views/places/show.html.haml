@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Nickname:
+  = @place.nickname
+%p
+  %b Street:
+  = @place.street
+%p
+  %b City:
+  = @place.city
+%p
+  %b Country:
+  = @place.country
+
+= link_to 'Edit', edit_place_path(@place)
+\|
+= link_to 'Back', places_path

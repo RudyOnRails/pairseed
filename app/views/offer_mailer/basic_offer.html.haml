@@ -1,0 +1,9 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %p Topic: #{link_to @topic.title, topic_url(@topic)}
+    %p Message: #{@offer.message}
+    %p Where: #{@offer.suggested_place}
+    %p When: #{@offer.suggested_datetime.strftime("%A, %B #{@offer.suggested_datetime.day.ordinalize} @ %-l:%M%P")}

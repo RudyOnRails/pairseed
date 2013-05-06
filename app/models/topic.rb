@@ -1,8 +1,8 @@
-class PairTopic < ActiveRecord::Base
+class Topic < ActiveRecord::Base
   attr_accessible :title, :description
   acts_as_taggable_on :subjects
 
   belongs_to :user
-  has_many :pair_offers
+  has_many :offers
 
 end
