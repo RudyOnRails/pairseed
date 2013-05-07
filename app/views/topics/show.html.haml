@@ -25,7 +25,10 @@
                 %th Where
               -@offers.each do |offer|
                 %tr
-                  %td=link_to "Accept", accept_offer_path(:id => offer.id)
+                  -if @topic.state == "active"
+                    %td=link_to "Accept", accept_offer_path(:id => offer.id)
+                  -else
+                    %td=offer.state
                   %td=offer.user.full_name
                   %td=offer.message
                   %td=offer.suggested_datetime.strftime("%A, %B #{offer.suggested_datetime.day.ordinalize} @ %-l:%M%P")
