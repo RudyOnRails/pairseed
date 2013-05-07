@@ -13,8 +13,9 @@ class OffersController < ApplicationController
 
   def accept
     @offer = Offer.find(params[:id])
-    # @offer.accept
+    @offer.accept
     @topic = @offer.topic
+    @topic.accept_offer
 
     redirect_to @topic
   end
