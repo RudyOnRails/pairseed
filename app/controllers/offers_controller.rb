@@ -14,6 +14,7 @@ class OffersController < ApplicationController
   def accept
     @offer = Offer.find(params[:id])
     @offer.accept
+    OfferMailer.basic_acceptance(@offer).deliver
     @topic = @offer.topic
     other_offers = @topic.offers.reject {|offer| offer == @offer}
     other_offers.each do |other_offer|

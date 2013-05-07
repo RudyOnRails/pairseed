@@ -1,0 +1,11 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1 It’s time to get your pair on...
+    %p #{@acceptor.full_name} has accepted your offer to pair. Here’s the deets:
+
+    %p Topic: #{@topic.title}
+    %p Where: #{@offer.suggested_place}
+    %p When: #{@offer.suggested_datetime.strftime("%A, %B #{@offer.suggested_datetime.day.ordinalize} @ %-l:%M%P")}
