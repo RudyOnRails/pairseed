@@ -15,7 +15,12 @@ class OffersController < ApplicationController
     @offer = Offer.find(params[:id])
     @offer.accept
     @topic = @offer.topic
+    other_offers = @topic.offers.reject {|offer| offer == @offer}
+    other_offers.each do |other_offer|
+      other_offer.decline
+    end
     @topic.accept_offer
+
 
     redirect_to @topic
   end
