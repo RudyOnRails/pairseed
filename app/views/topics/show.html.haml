@@ -24,7 +24,7 @@
                 %th When
                 %th Where
               -@offers.each do |offer|
-                %tr
+                %tr{:class => offer_tr_class(offer)}
                   -if @topic.state == "active"
                     %td=link_to "Accept", accept_offer_path(:id => offer.id)
                   -else
