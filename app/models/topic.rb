@@ -5,4 +5,7 @@ class Topic < ActiveRecord::Base
   belongs_to :user
   has_many :offers
 
+  state_machine :initial => :active do
+  end
+
 end
