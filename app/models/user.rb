@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
   has_many :organization_topics, :through => :organizations, :source => :member_topics, :uniq => true
   has_many :offers
 
+  after_create :send_email_to_kevin
+
   def not_a_member?(organization_id)
     !self.organizations.include?(organization_id)
   end
@@ -32,4 +34,8 @@ class User < ActiveRecord::Base
     first_name + " " + last_name
   end
 
+  private
+    def send_email_to_kevin
+      AdministrationMailer.notify_onboarding_about_new_user(self).deliver
+    end
 end
