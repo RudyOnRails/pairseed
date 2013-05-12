@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 
-  before_filter :authenticate_user!, :only => [:topic_feed]
+  before_filter :authenticate_user!, :only => [:dashboard]
 
   def topic_map
     @topics = Topic.all
@@ -24,6 +24,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-
+    @page = "my_topics"
+    @my_topics = current_user.topics
   end
 end

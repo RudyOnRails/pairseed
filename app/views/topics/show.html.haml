@@ -1,12 +1,13 @@
 .row
-  .span1=image_tag avatar_url(@topic.user)
-  .span11
-    %h1
+  .span1
+    =image_tag avatar_url(@topic.user)
+  .span9
+    %h2
       =raw @topic.title
       -unless cannot? :manage, @topic
         =link_to "Edit", edit_topic_path, :class => 'btn'
 .row.top-buffer
-  .span12
+  .span10
     -if can? :manage, @topic
       %ul.nav.nav-tabs#myTab
         / %li.active=link_to "Requests", "#requests", :"data-toggle" => "tab"

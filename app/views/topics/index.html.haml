@@ -1,10 +1,13 @@
-.table
+%ul.nav.nav-tabs#myTab
+  %li.active=link_to "Active", "#open", :"data-toggle" => "tab"
+  %li=link_to "Archived", "#archived", :"data-toggle" => "tab"
+  / %li=link_to "Learned", "#learned", :"data-toggle" => "tab"
+  %li=link_to "Appointments", "#appointments", :"data-toggle" => "tab"
+
+
+.table.top-buffer
   %table
     %tr
-      %th Topic
-      %th Created
     -@topics.each do |topic|
       %tr
         %td=link_to raw(topic.title), topic_path(topic.id)
-        %td=distance_of_time_in_words(topic.created_at, Time.now) + ' ago'
-        %td=link_to "Edit", edit_topic_path(topic)

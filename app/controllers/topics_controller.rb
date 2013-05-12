@@ -3,6 +3,7 @@ class TopicsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
+    @current_page = "my_topics"
     @topics = current_user.topics
   end
 

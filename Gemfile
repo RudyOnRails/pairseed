@@ -22,6 +22,8 @@ end
 
 group :development do
   gem 'pry-rails'
+  gem 'guard-livereload'
+  gem 'rack-livereload'
 end
 
 gem 'jquery-rails'
