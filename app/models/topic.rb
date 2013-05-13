@@ -6,7 +6,7 @@ class Topic < ActiveRecord::Base
   has_many :offers
 
   state_machine :initial => :active do
-    event :accept_offer do
+    event :schedule do
       transition [:active] => :scheduled
     end
   end

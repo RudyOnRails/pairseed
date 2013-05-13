@@ -20,7 +20,7 @@ class OffersController < ApplicationController
     other_offers.each do |other_offer|
       other_offer.decline
     end
-    @topic.accept_offer
+    @topic.schedule
 
 
     redirect_to @topic
