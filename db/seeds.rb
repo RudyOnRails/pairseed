@@ -15,17 +15,12 @@ fahad = User.create(:first_name => "Fahad", :last_name => "Sami", :email => "fah
 fonso = User.create(:first_name => "Alfonso", :last_name => "Rush", :email => "fonso@pairseed.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "thefonso")
 cullen = User.create(:first_name => "Tom", :last_name => "Cullen", :email => "cullen@pairseed.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "cullen")
 t_bone = User.create(:first_name => "Tom", :last_name => "Brown", :email => "tom_brown@pairseed.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "t_bone")
-g_hendry = User.create(:first_name => "Ginny", :last_name => "Hendry", :email => "g_hendry@pairseed.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "g_hendry")
-h_twardosz = User.create(:first_name => "Heather", :last_name => "Twardosz", :email => "kmusiorski@pairseed.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "heatheret")
-a_patel = User.create(:first_name => "Ankur", :last_name => "Patel", :email => "emailankur@pairseed.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "emailankur")
 
 kevin1 = kevin.topics.create(:title => "Looking to get started with FactoryGirl.")
 kevin.topics.create(:title => "if anyone has any experience with the google calendar API and would like to pair up and play around, give me a shout.")
 fonso.topics.create(:title => "Error R11 (Bad bind) -> Process bound to port 3000, should be 12776")
 fonso.topics.create(:title => "I'm trying to figure out what this font is.")
 fonso.topics.create(:title => "Has anyone had experience with turn.js ?")
-h_twardosz.topics.create(:title => "I'm working on a site using a squarespace template and now want to drop in the slider code.")
-a_patel.topics.create(:title => "Our team is looking into developing with PhoneGap - does anyone have any expertise with PhoneGap development that is willing to jump on a 30 minute phone call with us?")
 t_bone.topics.create(:title => "Looking to go over the basics of git.")
 
 offer1 = kevin1.offers.create(:user_id => fonso.id, :suggested_datetime => Time.now + 2.days, :message => "I can help!", :suggested_place => "1871")
