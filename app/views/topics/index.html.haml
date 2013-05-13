@@ -7,7 +7,9 @@
 
 .table.top-buffer
   %table
-    %tr
     -@topics.each do |topic|
       %tr
+        %td
+          =unless !topic.offer_accepted?
+            %i.icon-calendar.icon-2x
         %td=link_to raw(topic.title), topic_path(topic.id)
