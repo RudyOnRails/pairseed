@@ -1,0 +1,9 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1 Just a friendly reminder of today's pair appointment...
+    %p Topic: #{@topic.title}
+    %p Where: #{@appointment.place}
+    %p When: #{@appointment.date_and_time.strftime("%A, %B #{@appointment.date_and_time.day.ordinalize} @ %-l:%M%P")}

@@ -3,6 +3,7 @@ Topic.delete_all
 User.delete_all
 Membership.delete_all
 Offer.delete_all
+Appointment.delete_all
 
 kevin = User.create(:first_name => "Kevin", :last_name => "Musiorski", :email => "rudyonrails@gmail.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "RudyOnRails")
 helper = User.create(:first_name => "Helper", :last_name => "McGee", :email => "helper@pairseed.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "i_help_you")
