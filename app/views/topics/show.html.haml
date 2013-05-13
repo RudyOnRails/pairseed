@@ -1,12 +1,13 @@
 .row
   .span1
     =image_tag avatar_url(@topic.user)
-  .span9
+  .span8
     %h2
       =raw @topic.title
-      -unless cannot? :manage, @topic
-        =link_to "Edit", edit_topic_path, :class => 'btn btn-small'
-        =link_to "Delete", topic_path, :method => :delete, :class => 'btn btn-small btn-danger', :confirm => "Are you sure you want to delete this topic?"
+  .span1
+    -unless cannot? :manage, @topic
+      =link_to "Edit", edit_topic_path, :class => 'btn btn-small'
+      =link_to "Delete", topic_path, :method => :delete, :class => 'btn btn-small btn-danger', :confirm => "Are you sure you want to delete this topic?"
 .row.top-buffer
   .span10
     -if can? :manage, @topic
