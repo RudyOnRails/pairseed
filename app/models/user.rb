@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   has_many :organizations, :through => :memberships
   has_many :organization_topics, :through => :organizations, :source => :member_topics, :uniq => true
   has_many :offers
+  has_many :appointments
 
   after_create :send_email_to_kevin unless !Rails.env.production?
 

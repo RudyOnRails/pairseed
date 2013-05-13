@@ -1,0 +1,18 @@
+%h1 My Pair Appointments
+
+%ul.nav.nav-tabs#myTab
+  %li.active=link_to "Upcoming", "#upcoming", :"data-toggle" => "tab"
+  %li=link_to "History", "#history", :"data-toggle" => "tab"
+.tab-content
+  .tab-pane.active#upcoming
+    .table
+      %table
+        %tr
+          %th Topic
+          %th When
+          %th Where
+        -@my_appointments.each do |appointment|
+          %tr
+            %td=appointment.topic.title
+            %td=appointment.date_and_time
+            %td=appointment.date_and_time

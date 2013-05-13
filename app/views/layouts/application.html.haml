@@ -48,15 +48,15 @@
               %li.nav-header
                 Pair Topics
               %li{:class => "#{ "active" unless @current_page != "my_topics" }"}
-                =link_to "Get Help", topics_path
-              %li{:class => "#{ "active" unless @current_page != "pair_friends"}"}
-                =link_to "Give Help", ""
+                =link_to "Mine", topics_path
+              %li{:class => "#{ "active" unless params[:action] != "theirs"}"}
+                =link_to "Theirs", their_topics_path
               %li.nav-header
                 Pair Up
               %li{:class => "#{ "active" unless @current_page != "my_requests" }"}
                 =link_to "Requests", topics_path
-              %li{:class => "#{ "active" unless @current_page != "pair_friends"}"}
-                =link_to "Appointments", ""
+              %li{:class => "#{ "active" unless @current_page != "my_appointments"}"}
+                =link_to "My Appointments", appointments_path
               %li.nav-header
                 Pair People (that)
               %li{:class => "#{ "active" unless @current_page != "pair_friends"}"}

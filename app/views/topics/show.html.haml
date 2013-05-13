@@ -12,12 +12,10 @@
   .span10
     -if can? :manage, @topic
       %ul.nav.nav-tabs#myTab
-        / %li.active=link_to "Requests", "#requests", :"data-toggle" => "tab"
-        %li.active=link_to "Offers", "#offers", :"data-toggle" => "tab"
+        %li.active=link_to "Appointment", "#appointment", :"data-toggle" => "tab" unless !@topic.scheduled?
+        %li=link_to "Offers", "#offers", :"data-toggle" => "tab"
       .tab-content
-        / .tab-pane.active#requests
-        /   Here are the requests
-        .tab-pane.active#offers
+        .tab-pane#offers
           .table
             %table
               %tr
@@ -36,6 +34,7 @@
                   %td=offer.message
                   %td=offer.suggested_datetime.strftime("%A, %B #{offer.suggested_datetime.day.ordinalize} @ %-l:%M%P")
                   %td=offer.suggested_place
+        .tab-pane.active#appointment
 
     -else
       -if current_user.has_not_offered_help?(@topic.id, current_user.id)

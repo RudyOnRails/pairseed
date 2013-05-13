@@ -11,4 +11,8 @@ class Topic < ActiveRecord::Base
     end
   end
 
+  def self.pairable
+    where(:state => :active)
+  end
+
 end

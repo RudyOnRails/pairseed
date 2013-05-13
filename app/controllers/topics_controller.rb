@@ -7,11 +7,16 @@ class TopicsController < ApplicationController
     @topics = current_user.topics
   end
 
+  def theirs
+    @their_pairable_topics = Topic.pairable.where("user_id != ?", current_user.id)
+  end
+
   def show
     @topic = Topic.find(params[:id])
     @offer = Offer.new
     @my_offer = Offer.find_by_user_id_and_topic_id(current_user.id, @topic.id)
     @offers = @topic.offers
+    @my_appointments = current_user.appointments
 
   end
 

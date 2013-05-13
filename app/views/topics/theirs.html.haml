@@ -1,0 +1,7 @@
+%h1 Their Topics
+
+.table.top-buffer
+  %table
+    -@their_pairable_topics.each do |topic|
+      %tr
+        %td=link_to raw(topic.title), topic_path(topic.id)
