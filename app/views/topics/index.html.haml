@@ -10,6 +10,6 @@
     -@topics.each do |topic|
       %tr
         %td
-          =unless !topic.scheduled?
+          -unless !topic.scheduled?
             %i.icon-calendar.icon-2x
         %td=link_to raw(topic.title), topic_path(topic.id)
