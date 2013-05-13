@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   has_many :organization_topics, :through => :organizations, :source => :member_topics, :uniq => true
   has_many :offers
 
-  after_create :send_email_to_kevin
+  after_create :send_email_to_kevin unless !Rails.env.production?
 
   def not_a_member?(organization_id)
     !self.organizations.include?(organization_id)
