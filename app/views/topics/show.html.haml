@@ -35,6 +35,7 @@
                   %td=offer.suggested_datetime.strftime("%A, %B #{offer.suggested_datetime.day.ordinalize} @ %-l:%M%P")
                   %td=offer.suggested_place
         .tab-pane.active#appointment
+          
 
     -else
       -if current_user.has_not_offered_help?(@topic.id, current_user.id)
