@@ -14,5 +14,5 @@
         -@my_appointments.each do |appointment|
           %tr
             %td=appointment.topic.title
-            %td=appointment.date_and_time
+            %td=appointment.date_and_time.strftime("%A, %B #{appointment.date_and_time.day.ordinalize} @ %-l:%M%P")
             %td=appointment.place
