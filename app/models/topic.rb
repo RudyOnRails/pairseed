@@ -4,6 +4,7 @@ class Topic < ActiveRecord::Base
 
   belongs_to :user
   has_many :offers
+  has_one :appointment
 
   state_machine :initial => :active do
     event :schedule do

@@ -3,7 +3,7 @@
     =image_tag avatar_url(@topic.user)
   .span8
     %h2
-      =raw @topic.title
+      =raw @topic.title 
   .span1
     -unless cannot? :manage, @topic
       =link_to "Edit", edit_topic_path, :class => 'btn btn-small'
@@ -27,15 +27,17 @@
               -@offers.each do |offer|
                 %tr{:class => offer_tr_class(offer)}
                   -if @topic.active?
-                    %td=link_to "Accept", accept_offer_path(:id => offer.id)
+                    %td=link_to "Accept", accept_offer_path(:id => offer.id), :class => "btn btn-success"
                   -else
                     %td=offer.state
                   %td=offer.user.full_name
                   %td=offer.message
-                  %td=offer.suggested_datetime.strftime("%A, %B #{offer.suggested_datetime.day.ordinalize} @ %-l:%M%P")
+                  %td=offer.suggested_datetime
                   %td=offer.suggested_place
         .tab-pane.active#appointment
-          
+          -unless !@topic.scheduled?
+            =@appointment.date_and_time
+            =link_to "Cancel", cancel_appointment_path(@appointment.id), :class => "btn btn-danger"
 
     -else
       -if current_user.has_not_offered_help?(@topic.id, current_user.id)

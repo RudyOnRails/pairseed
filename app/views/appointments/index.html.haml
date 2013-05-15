@@ -14,5 +14,5 @@
         -@my_appointments.each do |appointment|
           %tr
             %td=link_to appointment.topic.title, topic_path(appointment.topic.id)
-            %td=appointment.date_and_time.strftime("%A, %B #{appointment.date_and_time.day.ordinalize} @ %-l:%M%P")
+            %td=appointment.date_and_time
             %td=appointment.place

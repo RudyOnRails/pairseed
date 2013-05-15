@@ -20,6 +20,8 @@ PairSeed::Application.routes.draw do
 
   get '/offers/accept' => "offers#accept", :as => :accept_offer
 
-  resources :appointments, :only => :index
+  resources :appointments, :only => :index do
+    get :cancel, :on => :member
+  end
   
 end

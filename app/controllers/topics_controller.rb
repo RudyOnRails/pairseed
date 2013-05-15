@@ -16,8 +16,7 @@ class TopicsController < ApplicationController
     @offer = Offer.new
     @my_offer = Offer.find_by_user_id_and_topic_id(current_user.id, @topic.id)
     @offers = @topic.offers
-    @my_appointments = current_user.appointments
-
+    @appointment = @topic.appointment
   end
 
   def edit
