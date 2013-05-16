@@ -26,7 +26,7 @@
                 %th Where
               -@offers.each do |offer|
                 %tr{:class => offer_tr_class(offer)}
-                  -if @topic.active?
+                  -if offer.acceptable?
                     %td=link_to "Accept", accept_offer_path(:id => offer.id), :class => "btn btn-success"
                   -else
                     %td=offer.state

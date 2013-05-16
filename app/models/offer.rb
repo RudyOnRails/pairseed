@@ -3,13 +3,13 @@ class Offer < ActiveRecord::Base
   belongs_to :topic
   belongs_to :user
 
-  state_machine :initial => :active do
+  state_machine :initial => :acceptable do
     event :accept do
-      transition [:active] => :accepted
+      transition [:acceptable] => :accepted
     end
 
     event :decline do
-      transition [:active] => :declined
+      transition [:acceptable] => :declined
     end
   end
 
