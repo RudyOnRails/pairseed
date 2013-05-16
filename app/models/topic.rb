@@ -6,14 +6,14 @@ class Topic < ActiveRecord::Base
   has_many :offers
   has_one :appointment
 
-  state_machine :initial => :active do
+  state_machine :initial => :unoffered do
     event :schedule do
-      transition [:active] => :scheduled
+      transition [:unoffered] => :scheduled
     end
   end
 
   def self.pairable
-    where(:state => :active)
+    where(:state => :unoffered)
   end
 
 end
