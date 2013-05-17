@@ -12,10 +12,13 @@
   .span10
     -if can? :manage, @topic
       %ul.nav.nav-tabs#myTab
-        %li.active=link_to "Appointment", "#appointment", :"data-toggle" => "tab" unless !@topic.scheduled?
-        %li=link_to "Offers", "#offers", :"data-toggle" => "tab"
+        -if @topic.scheduled?
+          %li.active=link_to "Appointment", "#appointment", :"data-toggle" => "tab"
+          %li=link_to "Offers", "#offers", :"data-toggle" => "tab"
+        -else
+          %li.active=link_to "Offers", "#offers", :"data-toggle" => "tab"
       .tab-content
-        .tab-pane#offers
+        .tab-pane#offers{:class => ("active" unless @topic.scheduled?)}
           .table
             %table
               %tr
