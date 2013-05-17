@@ -10,6 +10,10 @@ class Topic < ActiveRecord::Base
     event :schedule do
       transition [:unoffered] => :scheduled
     end
+
+    event :offer_help do
+      transition [:unoffered] => :offered
+    end
   end
 
   def self.pairable
