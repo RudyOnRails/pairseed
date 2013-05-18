@@ -22,7 +22,7 @@ class OffersController < ApplicationController
       other_offer.decline
     end
     @topic.schedule
-    Appointment.create(:place => @offer.suggested_place, :date_and_time => @offer.suggested_datetime, :helper_id => @offer.user.id, :helpee_id => @topic.user.id, :topic_id => @topic.id)
+    Appointment.create(:offer_id => @offer.id, :place => @offer.suggested_place, :date_and_time => @offer.suggested_datetime, :helper_id => @offer.user.id, :helpee_id => @topic.user.id, :topic_id => @topic.id)
 
 
     redirect_to @topic
