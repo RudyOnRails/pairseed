@@ -8,13 +8,14 @@ class TopicsController < ApplicationController
   end
 
   def theirs
-    @their_pairable_topics = Topic.pairable.where("user_id != ?", current_user.id)
+    @unoffered_topics = Topic.offerable.where("user_id != ?", current_user.id)
+    @offered_topics = Topic.offered.where("user_id != ?", current_user.id)
   end
 
   def show
     @topic = Topic.find(params[:id])
     @offer = Offer.new
-    @my_offer = Offer.find_by_user_id_and_topic_id(current_user.id, @topic.id)
+    @my_offers = Offer.where("user_id = ? AND topic_id = ?", current_user.id, @topic.id)
     @offers = @topic.offers
     @appointment = @topic.appointment
   end
