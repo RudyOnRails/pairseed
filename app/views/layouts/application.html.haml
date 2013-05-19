@@ -17,9 +17,9 @@
       .navbar-inner
         .container
           %ul.nav
-            .brand=link_to 'PairSeed', root_path
-            %li=link_to "Add Topic", new_topic_path unless !user_signed_in?
+            .brand=link_to "PairSeed", root_path
           .pull-right
+            =link_to "Add Topic", new_topic_path, :class => "btn btn-success" unless !user_signed_in?
             -if user_signed_in?
               .btn-group
                 =link_to("#",{:class => "btn dropdown-toggle", :"data-toggle" => "dropdown"}) do
