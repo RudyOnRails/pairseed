@@ -12,6 +12,10 @@ class Offer < ActiveRecord::Base
     event :decline do
       transition [:acceptable] => :declined
     end
+
+    event :cancel_appointment do
+      transition [:accepted] => :appointment_cancelled
+    end
   end
 
 end
