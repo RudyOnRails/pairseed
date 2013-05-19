@@ -1,18 +1,37 @@
-%h1 My Pair Appointments
-
 %ul.nav.nav-tabs#myTab
   %li.active=link_to "Upcoming", "#upcoming", :"data-toggle" => "tab"
-  %li=link_to "History", "#history", :"data-toggle" => "tab"
+  %li=link_to "Cancelled", "#cancelled", :"data-toggle" => "tab"
 .tab-content
   .tab-pane.active#upcoming
-    .table
-      %table
-        %tr
-          %th Topic
-          %th When
-          %th Where
-        -@my_appointments.each do |appointment|
+    -if @my_appointments.empty?
+      You have no upcoming appointments!
+      =link_to "Go help someone!", their_topics_path
+    -else
+      .table
+        %table
           %tr
-            %td=link_to appointment.topic.title, topic_path(appointment.topic.id)
-            %td=appointment.date_and_time
-            %td=appointment.place
+            %th Topic
+            %th When
+            %th Where
+            %th With
+          -@my_appointments.each do |appointment|
+            %tr
+              %td=link_to appointment.topic.title, topic_path(appointment.topic.id)
+              %td=appointment.date_and_time
+              %td=appointment.place
+  .tab-pane#cancelled
+    -if @my_cancelled_appointments.empty?
+      You have no cancelled appointments! Good job!
+    -else
+      .table
+        %table
+          %tr
+            %th Topic
+            %th When
+            %th Where
+            %th With
+          -@my_cancelled_appointments.each do |cancelled_appointment|
+            %tr
+              %td=link_to cancelled_appointment.topic.title, topic_path(cancelled_appointment.topic.id)
+              %td=cancelled_appointment.date_and_time
+              %td=cancelled_appointment.place
