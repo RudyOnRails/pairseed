@@ -17,7 +17,9 @@ class Appointment < ActiveRecord::Base
 
   end
 
-  def send_cancel_email
+  def do_cancel_stuff
+    self.topic.cancel_appointment
+    self.offer.cancel_appointment
     AppointmentMailer.cancel_appointment(self.id).deliver
   end
 
