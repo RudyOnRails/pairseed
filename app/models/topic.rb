@@ -9,17 +9,25 @@ class Topic < ActiveRecord::Base
   has_one :appointment
 
   state_machine :initial => :unoffered do
-    event :schedule do
-      transition [:unoffered] => :scheduled
-    end
-
     event :offer_help do
       transition [:unoffered] => :offered
+    end    
+
+    event :schedule do
+      transition [:offered] => :scheduled
+    end
+
+    event :cancel_appointment do
+      transition [:scheduled] => :unoffered
     end
   end
 
-  def self.pairable
+  def self.offerable
     where(:state => :unoffered)
+  end
+
+  def offerable
+    self.state == ("unoffered" || "offered")
   end
 
 end
