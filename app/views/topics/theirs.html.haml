@@ -1,7 +1,16 @@
-%h1 Their Topics
-
-.table.top-buffer
+/ %ul.nav.nav-tabs#myTab
+/   %li.active=link_to "UnOffered", "#unoffered", :"data-toggle" => "tab"
+/   %li=link_to "Offered", "#offered", :"data-toggle" => "tab"
+/ .tab-content
+/   .tab-pane.active#unoffered
+.table.table-striped
   %table
-    -@their_pairable_topics.each do |topic|
+    -@unoffered_topics.each do |topic|
       %tr
         %td=link_to raw(topic.title), topic_path(topic.id)
+  / .tab-pane#offered
+  /   .table
+  /     %table
+  /       -@offered_topics.each do |topic|
+  /         %tr
+  /           %td=link_to raw(topic.title), topic_path(topic.id)
