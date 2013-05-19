@@ -39,32 +39,46 @@
                   %td=offer.suggested_place
         .tab-pane.active#appointment
           -unless !@topic.scheduled?
-            =@appointment.date_and_time
-            =link_to "Cancel", cancel_appointment_path(@appointment.id), :class => "btn btn-danger"
-
+            %h3
+              When:
+              =@appointment.date_and_time
+              =link_to "Cancel", cancel_appointment_path(@appointment.id), :class => "btn btn-danger"
+            %h3
+              Where:
+              =@appointment.place
+            %h3
+              With:
     -else
-      -if current_user.has_not_offered_help?(@topic.id, current_user.id)
-        .offset1.span8
-          =form_for @offer do |f|
-            %fieldset
-              =f.hidden_field :topic_id, :value => @topic.id
-              .control-group.span4
-                =f.label :message, "Message"
-                .controls
-                  =f.text_area :message, :class => 'span4', :rows => 10
-              .control-group.span2
-                =f.label :suggested_place, "Suggest a place..."
-                .controls
-                  =f.text_field :suggested_place
-                =f.label :suggested_datetime, "Suggest a day & time..."
-                .controls
-                  =f.text_field :suggested_datetime
-                .action
-                  =f.submit "Send Offer", :class => 'btn btn-success'
-      -else
-        =@my_offer.message
-
-
-
+      =render 'offers/form' if @topic.offerable
+      %ul.nav.nav-tabs#myTab
+        -if @topic.scheduled?
+          %li.active=link_to "Appointment", "#appointment", :"data-toggle" => "tab" unless !@topic.scheduled?
+          %li=link_to "Offers I Made", "#myoffers", :"data-toggle" => "tab"
+        -else
+          %li.active=link_to "Offers I Made", "#myoffers", :"data-toggle" => "tab"
+      .tab-content
+        .tab-pane#myoffers{:class => ("active" unless @topic.scheduled?)}
+          .table
+            %table
+              %tr
+                %th Status
+                %th Message
+                %th When
+              -@my_offers.each do |offer|
+                %tr
+                  %td=offer.state
+                  %td=offer.message
+                  %td=offer.suggested_datetime
+        .tab-pane#appointment{:class => ("active" unless !@topic.scheduled?)}
+          -unless !@topic.scheduled?
+            %h3
+              When:
+              =@appointment.date_and_time
+              =link_to "Cancel", cancel_appointment_path(@appointment.id), :class => "btn btn-danger"
+            %h3
+              Where:
+              =@appointment.place
+            %h3
+              With:
 
 
