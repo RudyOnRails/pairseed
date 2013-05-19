@@ -1,0 +1,18 @@
+.well
+  =form_for @offer do |f|
+    %legend>Offer To Pair...
+    %fieldset
+      =f.hidden_field :topic_id, :value => @topic.id
+      .control-group.span4
+        =f.label :message, "Message"
+        .controls
+          =f.text_area :message, :class => 'span4', :rows => 5, :placeholder => "I can help you with this, I've done it before..."
+      .control-group.span2
+        =f.label :suggested_place, "Suggest a place..."
+        .controls
+          =f.text_field :suggested_place
+        =f.label :suggested_datetime, "Suggest a day & time..."
+        .controls
+          =f.text_field :suggested_datetime
+        .action
+          =f.submit "Send Offer", :class => 'btn btn-success'
