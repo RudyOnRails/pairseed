@@ -2,7 +2,7 @@
   .span1
     =image_tag avatar_url(@topic.user)
   .span8
-    %h2
+    %h1
       =raw @topic.title 
   .span1
     -unless cannot? :manage, @topic
