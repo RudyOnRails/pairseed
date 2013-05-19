@@ -45,32 +45,32 @@
         - unless !user_signed_in?
           .span2
             %ul.nav.nav-list
-              %li.nav-header
-                Pair Topics
+              / %li.nav-header
+              /   Pair Topics
               %li{:class => "#{ "active" unless @current_page != "my_topics" }"}
-                =link_to "Mine", topics_path
+                =link_to "My Topics", topics_path
               %li{:class => "#{ "active" unless params[:action] != "theirs"}"}
-                =link_to "Theirs", their_topics_path
-              %li.nav-header
-                Pair Up
-              %li{:class => "#{ "active" unless @current_page != "my_requests" }"}
-                =link_to "Requests", topics_path
+                =link_to "Their Topics", their_topics_path
+              / %li.nav-header
+              /   Pair Up
+              / %li{:class => "#{ "active" unless @current_page != "my_requests" }"}
+              /   =link_to "Requests", topics_path
               %li{:class => "#{ "active" unless @current_page != "my_appointments"}"}
                 =link_to "My Appointments", appointments_path
-              %li.nav-header
-                Pair People (that)
-              %li{:class => "#{ "active" unless @current_page != "pair_friends"}"}
-                =link_to "I Follow", ""
-              %li{:class => "#{ "active" unless @current_page != "pair_friends"}"}
-                =link_to "Follow Me", ""
-              %li.nav-header
-                Pair Communities
-              %li{:class => "#{ "active" unless @current_page != "pair_friends"}"}
-                =link_to "The Starter League", ""
-              %li{:class => "#{ "active" unless @current_page != "pair_friends"}"}
-                =link_to "Dev Bootcamp", ""
-              %li{:class => "#{ "active" unless @current_page != "pair_friends"}"}
-                =link_to "Chicago Ruby", ""
+              / %li.nav-header
+              /   Pair People (that)
+              / %li{:class => "#{ "active" unless @current_page != "pair_friends"}"}
+              /   =link_to "I Follow", ""
+              / %li{:class => "#{ "active" unless @current_page != "pair_friends"}"}
+              /   =link_to "Follow Me", ""
+              / %li.nav-header
+              /   Pair Communities
+              / %li{:class => "#{ "active" unless @current_page != "pair_friends"}"}
+              /   =link_to "The Starter League", ""
+              / %li{:class => "#{ "active" unless @current_page != "pair_friends"}"}
+              /   =link_to "Dev Bootcamp", ""
+              / %li{:class => "#{ "active" unless @current_page != "pair_friends"}"}
+              /   =link_to "Chicago Ruby", ""
             
 
         .span10
