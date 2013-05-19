@@ -1,4 +1,6 @@
 class Topic < ActiveRecord::Base
+  scope :offered, -> { where(:state => "offered") }
+
   attr_accessible :title, :description
   acts_as_taggable_on :subjects
 
