@@ -4,7 +4,7 @@ PairSeed::Application.routes.draw do
 
   devise_for :users
 
-  root :to => "topics#index"
+  root :to => "topics#theirs"
 
   get 'pairfeed' => 'pages#pairfeed', :as => :pairfeed
 
