@@ -10,5 +10,8 @@
   .field
     = f.label :pic, "Need to upload a picture to get the point across?"
     = f.file_field :pic
+  .field
+    = f.label "Pair Type"
+    = f.collection_select :pair_type_id, PairType.all, :id, :name
   .actions
     = f.submit :class => "btn btn-success"

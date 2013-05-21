@@ -4,6 +4,8 @@
   .span8
     %h1
       =raw @topic.title 
+      %span.label.label-success
+        =@topic.pair_type.name
     =image_tag(@topic.pic) unless @topic.pic.blank?
   .span1
     -unless cannot? :manage, @topic

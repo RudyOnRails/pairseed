@@ -3,12 +3,13 @@ class Topic < ActiveRecord::Base
 
   mount_uploader :pic, TopicpicUploader
 
-  attr_accessible :title, :description, :pic
+  attr_accessible :title, :description, :pic, :pair_type_id
   acts_as_taggable_on :subjects
 
   belongs_to :user
   has_many :offers
   has_one :appointment
+  belongs_to :pair_type
 
   state_machine :initial => :unoffered do
     event :offer_help do
