@@ -56,3 +56,5 @@ gem 'will_paginate', '~> 3.0'
 gem "cancan"
 gem "font-awesome-rails"
 gem 'state_machine'
+gem 'better_errors'
+gem 'binding_of_caller'

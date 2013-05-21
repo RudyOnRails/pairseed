@@ -4,6 +4,7 @@
   .span8
     %h1
       =raw @topic.title 
+    =image_tag(@topic.pic) unless @topic.pic.blank?
   .span1
     -unless cannot? :manage, @topic
       =link_to "Edit", edit_topic_path, :class => 'btn btn-small'

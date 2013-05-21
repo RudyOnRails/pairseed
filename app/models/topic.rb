@@ -1,7 +1,9 @@
 class Topic < ActiveRecord::Base
   scope :offered, -> { where(:state => "offered") }
 
-  attr_accessible :title, :description
+  mount_uploader :pic, TopicpicUploader
+
+  attr_accessible :title, :description, :pic
   acts_as_taggable_on :subjects
 
   belongs_to :user
