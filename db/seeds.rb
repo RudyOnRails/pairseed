@@ -20,9 +20,8 @@ m_ebert = User.create(:first_name => "Mike", :last_name => "Ebert", :email => "m
 
 kevin1 = kevin.topics.create(:title => "Would like to chat with someone about AJAX in Rails and try to code an experiment.")
 kevin.topics.create(:title => "if anyone has any experience with the google calendar API and would like to pair up and play around, give me a shout.")
-fonso.topics.create(:title => "Error R11 (Bad bind) -> Process bound to port 3000, should be 12776")
-fonso.topics.create(:title => "I'm trying to figure out what this font is.")
-fonso.topics.create(:title => "Has anyone had experience with turn.js ?")
+neal.topics.create(:title => "I'm trying to figure out what this font is.")
+neal.topics.create(:title => "Has anyone had experience with turn.js ?")
 
 offer1 = kevin1.offers.create(:user_id => fonso.id, :suggested_datetime => Time.now + 2.days, :message => "I can help!", :suggested_place => "1871")
 kevin1.offer_help
