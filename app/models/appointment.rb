@@ -6,6 +6,7 @@ class Appointment < ActiveRecord::Base
 
   belongs_to :topic
   belongs_to :offer
+  has_one :screenshare
 
   state_machine :initial => :scheduled do
 
@@ -13,6 +14,10 @@ class Appointment < ActiveRecord::Base
 
     event :cancel do
       transition [:scheduled] => :cancelled
+    end
+
+    event :generate_screenshare do
+      transition [:scheduled] => :screenshare_generated
     end
 
   end

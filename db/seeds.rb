@@ -4,7 +4,10 @@ User.delete_all
 Membership.delete_all
 Offer.delete_all
 Appointment.delete_all
+PairType.delete_all
+Screenshare.delete_all
 
+# users...
 kevin = User.create(:first_name => "Kevin", :last_name => "Musiorski", :email => "rudyonrails@gmail.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "RudyOnRails")
 helper = User.create(:first_name => "Helper", :last_name => "McGee", :email => "helper@pairseed.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "i_help_you")
 neal = User.create(:first_name => "Neal", :last_name => "Sales-Griffin", :email => "neal@pairseed.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "Godfather")
@@ -17,22 +20,32 @@ fonso = User.create(:first_name => "Alfonso", :last_name => "Rush", :email => "f
 cullen = User.create(:first_name => "Tom", :last_name => "Cullen", :email => "cullen@pairseed.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "cullen")
 t_bone = User.create(:first_name => "Tom", :last_name => "Brown", :email => "tom_brown@pairseed.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "t_bone")
 m_ebert = User.create(:first_name => "Mike", :last_name => "Ebert", :email => "m_ebert@pairseed.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "m_ebert")
+kitty = User.create(:first_name => "Kitty", :last_name => "Singsuwan", :email => "kevin@pairseed.com", :password => "pairseed", :password_confirmation => "pairseed", :username => "kitty")
 
-kevin1 = kevin.topics.create(:title => "Would like to chat with someone about AJAX in Rails and try to code an experiment.")
-kevin.topics.create(:title => "if anyone has any experience with the google calendar API and would like to pair up and play around, give me a shout.")
-neal.topics.create(:title => "I'm trying to figure out what this font is.")
-neal.topics.create(:title => "Has anyone had experience with turn.js ?")
+# pair types...
+remote = PairType.create(:name => "remote")
+in_person = PairType.create(:name => "in-person")
+either = PairType.create(:name => "either")
 
-offer1 = kevin1.offers.create(:user_id => fonso.id, :suggested_datetime => Time.now + 2.days, :message => "I can help!", :suggested_place => "1871")
-kevin1.offer_help
-offer2 = kevin1.offers.create(:user_id => helper.id, :suggested_datetime => Time.now + 1.days, :message => "I can help!", :suggested_place => "Starbucks @ Chicago/Franklin")
-kevin1.offer_help
-offer3 = kevin1.offers.create(:user_id => neal.id, :suggested_datetime => Time.now + 3.hours, :message => "Hey Rudy, I want to get started with this too. Love, Neal.", :suggested_place => "37 Signals HQ")
-kevin1.offer_help
-offer4 = kevin1.offers.create(:user_id => vince.id, :suggested_datetime => Time.now + 45.minutes, :message => "Hey Rudy, let's do this.", :suggested_place => "TSL Design Classroom")
-kevin1.offer_help
-offer5 = kevin1.offers.create(:user_id => m_ebert.id, :suggested_datetime => Time.now + 45.minutes, :message => "Sure, let's mess with some Ajax... but I'm really hoping you make a synchronous call to the hostess!", :suggested_place => "FarmHouse")
-kevin1.offer_help
+# topics...
+ajax_topic = kevin.topics.create(:pair_type_id => either.id, :title => "Would like to chat with someone about AJAX in Rails and try to code an experiment.")
+kevin.topics.create(:pair_type_id => either.id, :title => "if anyone has any experience with the google calendar API and would like to pair up and play around, give me a shout.")
+kevin.topics.create(:pair_type_id => either.id, :title => "Trying to get this sentence to line up underneath the username info.")
+neal.topics.create(:pair_type_id => either.id, :title => "I'm trying to figure out what this font is.")
+neal.topics.create(:pair_type_id => either.id, :title => "Has anyone had experience with turn.js ?")
+
+# offers
+offer1 = ajax_topic.offers.create(:user_id => fonso.id, :suggested_datetime => Time.now + 2.days, :message => "I can help!", :suggested_place => "1871", :online => false)
+p offer1.errors
+ajax_topic.offer_help
+offer2 = ajax_topic.offers.create(:user_id => helper.id, :suggested_datetime => Time.now + 1.days, :message => "I can help!", :suggested_place => "Starbucks @ Chicago/Franklin", :online => false)
+ajax_topic.offer_help
+offer3 = ajax_topic.offers.create(:user_id => neal.id, :suggested_datetime => Time.now + 3.hours, :message => "Hey Rudy, I want to get started with this too. Love, Neal.", :suggested_place => "37 Signals HQ", :online => false)
+ajax_topic.offer_help
+offer4 = ajax_topic.offers.create(:user_id => vince.id, :suggested_datetime => Time.now + 45.minutes, :message => "Hey Rudy, let's do this.", :suggested_place => "TSL Design Classroom", :online => false)
+ajax_topic.offer_help
+offer5 = ajax_topic.offers.create(:user_id => m_ebert.id, :suggested_datetime => Time.now + 45.minutes, :message => "Sure, let's mess with some Ajax... but I'm really hoping you make a synchronous call to the hostess!", :suggested_place => "FarmHouse", :online => false)
+ajax_topic.offer_help
 
 kevin.places.create(:nickname => "C&C Starbucks", :street => "750 North Franklin Street", :city => "Chicago", :country => "USA")
 kevin.places.create(:nickname => "Tinley Starbucks", :street => "15901 South Harlem Avenue", :city => "Chicago", :country => "USA")

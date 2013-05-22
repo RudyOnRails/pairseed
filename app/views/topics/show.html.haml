@@ -51,6 +51,8 @@
               =@appointment.place
             %h3
               With:
+            =link_to "Start Screen Share", screenshares_path(:screenshare => {:appointment_id => @appointment.id}), :method => :post unless @appointment.screenshare_generated?
+            =raw @appointment.screenshare.applet_html if @appointment.screenshare_generated?
     -else
       =render 'offers/form' if @topic.offerable
       %ul.nav.nav-tabs#myTab
@@ -83,5 +85,6 @@
               =@appointment.place
             %h3
               With:
+            =link_to "Watch Screenshare", screenshare_path(:appointment_id => @appointment.id), :target => "_blank"
 
 

@@ -9,3 +9,9 @@
     %p Topic: #{@topic.title}
     %p Where: #{@offer.suggested_place}
     %p When: #{@offer.suggested_datetime.strftime("%A, %B #{@offer.suggested_datetime.day.ordinalize} @ %-l:%M%P")}
+
+    / =link_to "Add to Google Calendar", "http://www.google.com/calendar/event?action=TEMPLATE&text=PairSeed%20w%2F%20Mark%20Moschel&dates=20130604T123000Z/20130604T133000Z&details=Topic%3A%20I'm%20trying%20to%20learn%20Singly's%20interface.%20I%20can%20pull%20data%20in%20from%20all%20of%20the%20API's%2C%20but%20I%20don't%20think%20I'm%20using%20the%20best%20design%20pattern.%20If%20anyone%20has%20any%20experience%20with%20Singly%20or%20is%20interested%20in%20building%20a%20quick%20app%20together%2C%20I'd%20love%20to%20pair%20on%20it!&location=Starbucks%20(Chicago%2FFranklin)&trp=true&sprop=PairSeed&sprop=name:http%3A%2F%2Fwww.pairseed.com"
+
+    / :target => "_blank"
+
+    / <img src="//www.google.com/calendar/images/ext/gc_button3.gif" border=0></a>

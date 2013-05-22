@@ -1,7 +1,14 @@
 .well
   =form_for @offer do |f|
-    %legend>Offer To Pair...
+    %legend
+      Offer To Pair...
     %fieldset
+      =f.radio_button 'online', "0"
+      =f.label "In-Person"
+
+      =f.radio_button 'online', "1"
+      =f.label "Remote"
+
       =f.hidden_field :topic_id, :value => @topic.id
       .control-group.span4
         =f.label :message, "Message"

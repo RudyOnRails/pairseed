@@ -30,7 +30,7 @@ class Topic < ActiveRecord::Base
   end
 
   def offerable
-    self.state == ("unoffered" || "offered")
+    (self.state == "unoffered") || (self.state == "offered")
   end
 
 end

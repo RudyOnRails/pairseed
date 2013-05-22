@@ -23,5 +23,7 @@ PairSeed::Application.routes.draw do
   resources :appointments, :only => :index do
     get :cancel, :on => :member
   end
+
+  resources :screenshares, :only => [:create, :show]
   
 end

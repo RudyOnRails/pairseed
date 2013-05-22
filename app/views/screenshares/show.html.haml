@@ -1,0 +1,35 @@
+!!!
+%html
+  %head
+    =favicon_link_tag "/favicon.ico"
+
+    %title PairSeed - Code, together.
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+    
+    =favicon_link_tag "/apple-touch-icon.png", :rel => "apple-touch-icon"
+    =favicon_link_tag "/apple-touch-icon-72x72.png", :rel => "apple-touch-icon", :sizes => "72x72"
+    =favicon_link_tag "/apple-touch-icon-114x114.png", :rel => "apple-touch-icon", :sizes => "114x114"
+  %body
+    .container
+      .row
+        - flash.each do |name, msg|
+          %div{:class => "offset4 span4 alert alert-#{name == :notice ? "success" : "error"}"}
+            %a.close{"data-dismiss" => "alert"} ×
+            = msg
+      %iframe{:src => @viewer_url, :class => "span12", :style => "height: 900px"}
+    %footer
+    %script 
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-40386746-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+
