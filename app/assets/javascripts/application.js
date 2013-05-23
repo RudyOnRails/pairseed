@@ -19,7 +19,9 @@
 $(document).ready(function(){
 
   $("#offer_suggested_datetime").datetimepicker({
-    dateFormat: 'yy-mm-dd'
+    dateFormat: 'yy-mm-dd',
+    timeFormat: 'hh:mm TT',
+
   });
 
 });

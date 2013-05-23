@@ -25,5 +25,8 @@ PairSeed::Application.routes.draw do
   end
 
   resources :screenshares, :only => [:create, :show]
+
+  get "users" => "users#index", :as => :users
+  get "users/:id" => "users#show", :as => :user
   
 end

@@ -18,6 +18,7 @@
         .container
           %ul.nav
             .brand=link_to "PairSeed", root_path
+            %li=link_to "User Feedback!", "https://docs.google.com/document/d/1Ba9vZowwGPqCt974wt2kbhohiKYAKDjEJmeUeQ9QMxw/edit?usp=sharing", :target => "blank"
           .pull-right
             =link_to "Add Topic", new_topic_path, :class => "btn btn-success" unless !user_signed_in?
             -if user_signed_in?
@@ -51,12 +52,14 @@
                 =link_to "Their Topics", their_topics_path
               %li{:class => "#{ "active" unless @current_page != "my_topics" }"}
                 =link_to "My Topics", topics_path
+              %li{:class => "#{ "active" if (controller_name == "appointments" && controller.action_name == "index") }"}
+                =link_to "Pair Appointments", appointments_path
+              %li{:class => "#{ "active" if (controller_name == "users" && controller.action_name == "index") }"}
+                =link_to "User Profiles", users_path
               / %li.nav-header
               /   Pair Up
               / %li{:class => "#{ "active" unless @current_page != "my_requests" }"}
               /   =link_to "Requests", topics_path
-              %li{:class => "#{ "active" if (controller_name == "appointments" && controller.action_name == "index") }"}
-                =link_to "Pair Appointments", appointments_path
               / %li.nav-header
               /   Pair People (that)
               / %li{:class => "#{ "active" unless @current_page != "pair_friends"}"}

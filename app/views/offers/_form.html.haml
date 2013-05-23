@@ -20,6 +20,6 @@
           =f.text_field :suggested_place
         =f.label :suggested_datetime, "Suggest a day & time..."
         .controls
-          =f.text_field :suggested_datetime
+          =f.text_field :suggested_datetime, :value => f.try(:object).try(:suggested_datetime)
         .action
           =f.submit "Send Offer", :class => 'btn btn-success'

@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :username, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :first_name, :last_name, :username, :email, :password, :password_confirmation, :remember_me, :profile_attributes
+
+  extend FriendlyId
+  friendly_id :username, :use => :slugged
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -20,6 +23,9 @@ class User < ActiveRecord::Base
   has_many :organization_topics, :through => :organizations, :source => :member_topics, :uniq => true
   has_many :offers
   has_many :appointments
+  has_one :profile  
+
+  accepts_nested_attributes_for :profile
 
   after_create :send_email_to_kevin unless !Rails.env.production?
 

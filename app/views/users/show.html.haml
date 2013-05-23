@@ -1,0 +1,17 @@
+%h1
+  =image_tag(avatar_url(@user))
+  =@user.full_name
+  (#{@user.username})
+
+
+%h4 Summary
+%p
+  =@user.try(:profile).try(:summary)
+
+.table
+  %table
+    %tr
+      %th Name
+    -@user_topics.each do |topic|
+      %tr
+        %td=link_to topic.title, topic
