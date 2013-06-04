@@ -4,87 +4,87 @@
   .span8
     %h1
       =raw @topic.title 
-      %span.label.label-success
-        =@topic.pair_type.name
     =image_tag(@topic.pic) unless @topic.pic.blank?
   .span1
-    -unless cannot? :manage, @topic
-      =link_to "Edit", edit_topic_path, :class => 'btn btn-small'
-      =link_to "Delete", topic_path, :method => :delete, :class => 'btn btn-small btn-danger', :confirm => "Are you sure you want to delete this topic?"
+    -unless !user_signed_in?
+      -unless cannot? :manage, @topic
+        =link_to "Edit", edit_topic_path, :class => 'btn btn-small'
+        =link_to "Delete", topic_path, :method => :delete, :class => 'btn btn-small btn-danger', :confirm => "Are you sure you want to delete this topic?"
 .row.top-buffer
   .span10
-    -if can? :manage, @topic
-      %ul.nav.nav-tabs#myTab
-        -if @topic.scheduled?
-          %li.active=link_to "Appointment", "#appointment", :"data-toggle" => "tab"
-          %li=link_to "Offers", "#offers", :"data-toggle" => "tab"
-        -else
-          %li.active=link_to "Offers", "#offers", :"data-toggle" => "tab"
-      .tab-content
-        .tab-pane#offers{:class => ("active" unless @topic.scheduled?)}
-          .table
-            %table
-              %tr
-                %th
-                %th From
-                %th Message
-                %th When
-                %th Where
-              -@offers.each do |offer|
-                %tr{:class => offer_tr_class(offer)}
-                  -if offer.acceptable?
-                    %td=link_to "Accept", accept_offer_path(:id => offer.id), :class => "btn btn-success"
-                  -else
-                    %td=offer.state
-                  %td=offer.user.full_name
-                  %td=offer.message
-                  %td=offer.suggested_datetime
-                  %td=offer.suggested_place
-        .tab-pane.active#appointment
-          -unless !@topic.scheduled?
-            %h3
-              When:
-              =@appointment.date_and_time
-              =link_to "Cancel", cancel_appointment_path(@appointment.id), :class => "btn btn-danger"
-            %h3
-              Where:
-              =@appointment.place
-            %h3
-              With:
-            =link_to "Start Screen Share", screenshares_path(:screenshare => {:appointment_id => @appointment.id}), :method => :post unless @appointment.screenshare_generated?
-            =raw @appointment.screenshare.applet_html if @appointment.screenshare_generated?
-    -else
-      =render 'offers/form' if @topic.offerable
-      %ul.nav.nav-tabs#myTab
-        -if @topic.scheduled?
-          %li.active=link_to "Appointment", "#appointment", :"data-toggle" => "tab" unless !@topic.scheduled?
-          %li=link_to "Offers I Made", "#myoffers", :"data-toggle" => "tab"
-        -else
-          %li.active=link_to "Offers I Made", "#myoffers", :"data-toggle" => "tab"
-      .tab-content
-        .tab-pane#myoffers{:class => ("active" unless @topic.scheduled?)}
-          .table
-            %table
-              %tr
-                %th Status
-                %th Message
-                %th When
-              -@my_offers.each do |offer|
+    -unless !user_signed_in?
+      -if can? :manage, @topic
+        %ul.nav.nav-tabs#myTab
+          -if @topic.scheduled?
+            %li.active=link_to "Appointment", "#appointment", :"data-toggle" => "tab"
+            %li=link_to "Offers", "#offers", :"data-toggle" => "tab"
+          -else
+            %li.active=link_to "Offers", "#offers", :"data-toggle" => "tab"
+        .tab-content
+          .tab-pane#offers{:class => ("active" unless @topic.scheduled?)}
+            .table
+              %table
                 %tr
-                  %td=offer.state
-                  %td=offer.message
-                  %td=offer.suggested_datetime
-        .tab-pane#appointment{:class => ("active" unless !@topic.scheduled?)}
-          -unless !@topic.scheduled?
-            %h3
-              When:
-              =@appointment.date_and_time
-              =link_to "Cancel", cancel_appointment_path(@appointment.id), :class => "btn btn-danger"
-            %h3
-              Where:
-              =@appointment.place
-            %h3
-              With:
-            =link_to "Watch Screenshare", screenshare_path(:appointment_id => @appointment.id), :target => "_blank"
+                  %th
+                  %th From
+                  %th Message
+                  %th When
+                  %th Where
+                -@offers.each do |offer|
+                  %tr{:class => offer_tr_class(offer)}
+                    -if offer.acceptable?
+                      %td=link_to "Accept", accept_offer_path(:id => offer.id), :class => "btn btn-success"
+                    -else
+                      %td=offer.state
+                    %td=offer.user.full_name
+                    %td=offer.message
+                    %td=offer.suggested_datetime
+                    %td=offer.suggested_place
+          .tab-pane.active#appointment
+            -unless !@topic.scheduled?
+              %h3
+                When:
+                =@appointment.date_and_time
+                =link_to "Cancel", cancel_appointment_path(@appointment.id), :class => "btn btn-danger"
+              %h3
+                Where:
+                =@appointment.place
+              %h3
+                With:
+              =link_to "Start Screen Share", screenshares_path(:screenshare => {:appointment_id => @appointment.id}), :method => :post unless @appointment.screenshare_generated?
+              =raw @appointment.screenshare.applet_html if @appointment.screenshare_generated?
+      -else
+        =render 'offers/form' if @topic.offerable
+        %ul.nav.nav-tabs#myTab
+          -if @topic.scheduled?
+            %li.active=link_to "Appointment", "#appointment", :"data-toggle" => "tab" unless !@topic.scheduled?
+            %li=link_to "Offers I Made", "#myoffers", :"data-toggle" => "tab"
+          -else
+            %li.active=link_to "Offers I Made", "#myoffers", :"data-toggle" => "tab"
+        .tab-content
+          .tab-pane#myoffers{:class => ("active" unless @topic.scheduled?)}
+            .table
+              %table
+                %tr
+                  %th Status
+                  %th Message
+                  %th When
+                -@my_offers.each do |offer|
+                  %tr
+                    %td=offer.state
+                    %td=offer.message
+                    %td=offer.suggested_datetime
+          .tab-pane#appointment{:class => ("active" unless !@topic.scheduled?)}
+            -unless !@topic.scheduled?
+              %h3
+                When:
+                =@appointment.date_and_time
+                =link_to "Cancel", cancel_appointment_path(@appointment.id), :class => "btn btn-danger"
+              %h3
+                Where:
+                =@appointment.place
+              %h3
+                With:
+              =link_to "Watch Screenshare", screenshare_path(:appointment_id => @appointment.id), :target => "_blank"
 
 
