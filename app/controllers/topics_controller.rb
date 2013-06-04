@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
 
-  before_filter :authenticate_user!, except: :show
+  before_filter :authenticate_user!, except: [:show, :theirs]
 
   def index
     @current_page = "my_topics"
@@ -8,8 +8,13 @@ class TopicsController < ApplicationController
   end
 
   def theirs
-    @unoffered_topics = Topic.offerable.where("user_id != ?", current_user.id)
-    @offered_topics = Topic.offered.where("user_id != ?", current_user.id)
+    if user_signed_in?
+      @unoffered_topics = Topic.offerable.where("user_id != ?", current_user.id)
+      # @offered_topics = Topic.offered.where("user_id != ?", current_user.id)
+    else
+      @unoffered_topics = Topic.offerable
+    end
+
   end
 
   def show
