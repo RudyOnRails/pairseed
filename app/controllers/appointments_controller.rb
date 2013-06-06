@@ -1,4 +1,7 @@
 class AppointmentsController < ApplicationController
+
+  before_filter :authenticate_user!
+  
   def index
     @my_appointments = Appointment.where("helper_id = ? OR helpee_id = ?", current_user.id, current_user.id)
     # @my_cancelled_appointments = Appointment.cancelled.where("helper_id = ? OR helpee_id = ?", current_user.id, current_user.id)

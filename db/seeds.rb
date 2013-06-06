@@ -36,7 +36,7 @@ neal.topics.create(:pair_type_id => either.id, :title => "Has anyone had experie
 
 # offers
 offer1 = ajax_topic.offers.create(:user_id => fonso.id, :suggested_datetime => Time.now + 2.days, :message => "I can help!", :suggested_place => "1871", :online => false)
-p offer1.errors
+# p offer1.errors
 ajax_topic.offer_help
 offer2 = ajax_topic.offers.create(:user_id => helper.id, :suggested_datetime => Time.now + 1.days, :message => "I can help!", :suggested_place => "Starbucks @ Chicago/Franklin", :online => false)
 ajax_topic.offer_help

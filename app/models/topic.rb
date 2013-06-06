@@ -7,8 +7,8 @@ class Topic < ActiveRecord::Base
   acts_as_taggable_on :subjects
 
   belongs_to :user
-  has_many :offers
-  has_one :appointment
+  has_many :offers, :dependent => :destroy
+  has_one :appointment, :dependent => :destroy
   belongs_to :pair_type
 
   state_machine :initial => :unoffered do
