@@ -14,7 +14,7 @@
   =@topic.description
 .row.top-buffer
   .span10
-    -unless !user_signed_in?
+    -if user_signed_in?
       -if can? :manage, @topic
         %ul.nav.nav-tabs#myTab
           -if @topic.scheduled?
@@ -88,5 +88,6 @@
               %h3
                 With:
               =link_to "Watch Screenshare", screenshare_path(:appointment_id => @appointment.id), :target => "_blank"
-
+    -else
+      =link_to "Sign up to pair on this!", new_user_registration_path, :class => "btn btn-large btn-success btn-block"
 
