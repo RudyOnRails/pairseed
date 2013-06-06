@@ -49,7 +49,7 @@
               / %li.nav-header
               /   Pair Topics
               %li{:class => "#{ "active" unless params[:action] != "theirs"}"}
-                =link_to "Their Topics", their_topics_path
+                =link_to "Recent Topics", their_topics_path
               %li{:class => "#{ "active" unless @current_page != "my_topics" }"}
                 =link_to "My Topics", topics_path
               %li{:class => "#{ "active" if (controller_name == "appointments" && controller.action_name == "index") }"}
