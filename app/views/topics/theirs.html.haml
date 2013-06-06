@@ -8,7 +8,7 @@
   %table
     -@unoffered_topics.each do |topic|
       %tr
-        %td=image_tag avatar_url(topic.user)
+        %td=link_to (image_tag avatar_url(topic.user)), topic.user
         %td=link_to raw(topic.title), topic_path(topic.id)
   / .tab-pane#offered
   /   .table
