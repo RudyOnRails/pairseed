@@ -6,7 +6,11 @@
         - @topic.errors.full_messages.each do |msg|
           %li= msg
   .field
-    = f.text_area :title, :class => 'span6', :rows => 3, :placeholder => "Add a topic you are having trouble with or just want to learn and someone will offer to pair up."
+    = f.label :title
+    = f.text_area :title, :class => 'span6', :rows => 3, :placeholder => "Add a topic you are having trouble with or just want to learn..."
+  .field
+    = f.label :description
+    = f.text_area :description, :class => 'span6', :rows => 3, :placeholder => "Share a few sentences to describe your problem..."
   .field
     = f.label :pic, "Need to upload a picture to get the point across?"
     = f.file_field :pic

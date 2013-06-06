@@ -54,8 +54,8 @@
                 =link_to "My Topics", topics_path
               %li{:class => "#{ "active" if (controller_name == "appointments" && controller.action_name == "index") }"}
                 =link_to "Pair Appointments", appointments_path
-              %li{:class => "#{ "active" if (controller_name == "users" && controller.action_name == "index") }"}
-                =link_to "User Profiles", users_path
+              / %li{:class => "#{ "active" if (controller_name == "users" && controller.action_name == "index") }"}
+              /   =link_to "User Profiles", users_path
               / %li.nav-header
               /   Pair Up
               / %li{:class => "#{ "active" unless @current_page != "my_requests" }"}
