@@ -7,3 +7,4 @@
     %p Message: #{@offer.message}
     %p Where: #{@offer.suggested_place}
     %p When: #{@offer.suggested_datetime.strftime("%A, %B #{@offer.suggested_datetime.day.ordinalize} @ %-l:%M%P")}
+    %p #{link_to "Click here to manage this offer and any others", topic_url(@topic)}
